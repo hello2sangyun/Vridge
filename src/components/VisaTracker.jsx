@@ -5,10 +5,8 @@ export default function VisaTracker({ lang }) {
 
     const texts = {
         EN: {
-            title: "Visa & Progress Tracker",
-            sub: "End-to-End Transparency. 1,000 EUR + VAT total cost.",
-            feeLabel: "Current Fee Structure",
-            feeSub: "Milestone Based (50/50%)",
+            title: "Visa & Progress Tracker", sub: "End-to-End Transparency. 1,000 EUR + VAT total cost.",
+            feeLabel: "Current Fee Structure", feeSub: "Milestone Based (50/50%)",
             payment: "💰 50% Payment Due",
             steps: [
                 { title: "Document Review", detail: "Initial consultation and eligibility." },
@@ -20,10 +18,8 @@ export default function VisaTracker({ lang }) {
             ]
         },
         KR: {
-            title: "비자 및 수속 트래커",
-            sub: "엔드투엔드 투명성 보장. 총 수수료 1,000 유로 + VAT",
-            feeLabel: "청구 구조",
-            feeSub: "마일스톤 기반 (50/50%)",
+            title: "비자 및 수속 트래커", sub: "엔드투엔드 투명성 보장. 총 수수료 1,000 유로 + VAT",
+            feeLabel: "청구 구조", feeSub: "마일스톤 기반 (50/50%)",
             payment: "💰 중도금 결제 발생",
             steps: [
                 { title: "서류 검토", detail: "초기 상담 및 자격 요건 필터링." },
@@ -35,10 +31,8 @@ export default function VisaTracker({ lang }) {
             ]
         },
         DE: {
-            title: "Visa & Fortschritts-Tracker",
-            sub: "End-to-End-Transparenz. 1.000 EUR + MwSt. Gesamtkosten.",
-            feeLabel: "Aktuelle Gebührenstruktur",
-            feeSub: "Meilensteinbasiert (50/50%)",
+            title: "Visa & Fortschritts-Tracker", sub: "End-to-End-Transparenz. 1.000 EUR + MwSt. Gesamtkosten.",
+            feeLabel: "Aktuelle Gebührenstruktur", feeSub: "Meilensteinbasiert (50/50%)",
             payment: "💰 50% Zahlung fällig",
             steps: [
                 { title: "Dokumentenprüfung", detail: "Erstberatung und Eignung." },
@@ -50,13 +44,11 @@ export default function VisaTracker({ lang }) {
             ]
         },
         HU: {
-            title: "Vízum és Folyamat Követő",
-            sub: "Teljes átláthatóság. 1000 EUR + ÁFA teljes költség.",
-            feeLabel: "Jelenlegi díjstruktúra",
-            feeSub: "Mérföldkő alapú (50/50%)",
+            title: "Vízum és Folyamat Követő", sub: "Teljes átláthatóság. 1000 EUR + ÁFA teljes költség.",
+            feeLabel: "Jelenlegi díjstruktúra", feeSub: "Mérföldkő alapú (50/50%)",
             payment: "💰 50% Fizetés esedékes",
             steps: [
-                { title: "Dokumentumok ellenőrzése", detail: "Előzetes konzultáció 및 jogosultság." },
+                { title: "Dokumentumok ellenőrzése", detail: "Előzetes konzultáció és jogosultság." },
                 { title: "Tanácsadás", detail: "Részletes esetelemzés és stratégiatervezés." },
                 { title: "Nagykövetségi időpont", detail: "Időpontfoglalás a PH/IN magyar nagykövetségen." },
                 { title: "C-típusú vízum", detail: "Beutazási vízum jóváhagyva. 1. mérföldkő (50%)." },
@@ -71,6 +63,7 @@ export default function VisaTracker({ lang }) {
     return (
         <section className="section container" style={{ padding: '4rem 1rem' }}>
             <div className="glass" style={{ padding: '3rem', borderRadius: '24px' }}>
+
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '3rem', flexWrap: 'wrap', gap: '1rem' }}>
                     <div>
                         <h2 style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>{t.title}</h2>
@@ -85,7 +78,6 @@ export default function VisaTracker({ lang }) {
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', position: 'relative' }}>
-                    {/* Progress Line */}
                     <div style={{
                         position: 'absolute', top: 0, left: '24px', bottom: 0, width: '2px',
                         background: 'var(--border-color)', zIndex: 0
@@ -106,8 +98,7 @@ export default function VisaTracker({ lang }) {
                                 width: '48px', height: '48px', borderRadius: '50%', flexShrink: 0,
                                 background: activeStep >= idx ? 'var(--accent-blue)' : 'var(--bg-secondary)',
                                 border: `2px solid ${activeStep >= idx ? 'var(--accent-cyan)' : 'var(--border-color)'}`,
-                                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                fontWeight: 700,
+                                display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700,
                                 boxShadow: activeStep === idx ? '0 0 20px rgba(6,182,212,0.4)' : 'none',
                                 transition: 'all var(--transition-normal)'
                             }}>
@@ -124,9 +115,8 @@ export default function VisaTracker({ lang }) {
                             </div>
                             {idx === 3 || idx === 5 ? (
                                 <div style={{
-                                    padding: '0.5rem 1rem', background: 'rgba(255, 255, 255, 0.05)',
-                                    whiteSpace: 'nowrap', borderRadius: '100px', fontSize: '0.875rem',
-                                    border: '1px solid var(--border-color)'
+                                    padding: '0.5rem 1rem', background: 'rgba(255, 255, 255, 0.05)', whiteSpace: 'nowrap',
+                                    borderRadius: '100px', fontSize: '0.875rem', border: '1px solid var(--border-color)'
                                 }}>
                                     {t.payment}
                                 </div>

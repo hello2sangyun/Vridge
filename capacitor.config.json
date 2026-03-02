@@ -1,5 +1,5 @@
 {
-    "appId": "com.wormprotocol.app",
-    "appName": "Worm Protocol",
-    "webDir": "dist"
+  "appId": "com.wormprotocol.app",
+  "appName": "Worm Protocol",
+  "webDir": "dist"
 }
