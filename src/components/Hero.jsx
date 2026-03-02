@@ -1,125 +1,126 @@
 import React from 'react';
+import { IconArrowRight } from './Icons';
 
-export default function Hero({ content, lang }) {
+export default function Hero({ t }) {
+    const { hero } = t;
+
     return (
-        <section className="section" style={{
-            minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center',
-            position: 'relative', overflow: 'hidden', padding: '0 1rem'
+        <section id="home" style={{
+            position: 'relative', minHeight: '100vh',
+            display: 'flex', alignItems: 'center', overflow: 'hidden',
         }}>
-
-            {/* Dynamic Background Elements */}
-            <div className="bg-shape shape-blue"></div>
-            <div className="bg-shape shape-cyan"></div>
-            <div className="bg-shape shape-emerald"></div>
-
-            {/* Grid Pattern Overlay */}
+            {/* Background */}
             <div style={{
-                position: 'absolute', inset: 0, zIndex: 0, opacity: 0.1, pointerEvents: 'none',
-                backgroundImage: `linear-gradient(to right, #80808012 1px, transparent 1px), linear-gradient(to bottom, #80808012 1px, transparent 1px)`,
-                backgroundSize: '24px 24px', maskImage: 'radial-gradient(ellipse at center, black 40%, transparent 80%)', WebkitMaskImage: 'radial-gradient(ellipse at center, black 40%, transparent 80%)'
-            }}></div>
+                position: 'absolute', inset: 0,
+                backgroundImage: 'url(/budapest.png)',
+                backgroundSize: 'cover', backgroundPosition: 'center 40%',
+                filter: 'brightness(0.52)', transform: 'scale(1.03)', zIndex: 0,
+            }} />
+            <div style={{
+                position: 'absolute', inset: 0,
+                background: 'linear-gradient(to right, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.25) 60%, transparent 100%)',
+                zIndex: 1,
+            }} />
 
-            <div className="container" style={{ textAlign: 'center', maxWidth: '850px', zIndex: 1, position: 'relative' }}>
-
-                {/* Top Tagline */}
-                <div className="animate-fade-in" style={{ animationDelay: '0.1s', marginBottom: '1.5rem' }}>
-                    <span style={{
-                        display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '0.5rem 1.25rem',
-                        background: 'var(--glass-bg)', border: '1px solid var(--glass-border)',
-                        color: 'var(--text-primary)', borderRadius: '100px', fontSize: '0.875rem', fontWeight: 600,
-                        letterSpacing: '0.05em', backdropFilter: 'blur(10px)', boxShadow: '0 4px 20px rgba(0,0,0,0.1)'
+            {/* Content */}
+            <div className="container" style={{ position: 'relative', zIndex: 2, paddingTop: '80px', paddingBottom: '80px' }}>
+                <div style={{ maxWidth: '680px' }}>
+                    {/* Badge */}
+                    <div className="anim-0" style={{
+                        display: 'inline-flex', alignItems: 'center', gap: '8px',
+                        padding: '6px 16px', marginBottom: '28px',
+                        background: 'rgba(0,122,51,0.85)', backdropFilter: 'blur(8px)',
+                        border: '1px solid rgba(255,255,255,0.2)',
+                        borderRadius: '100px', color: '#fff',
+                        fontSize: '0.8125rem', fontWeight: 600,
                     }}>
-                        <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--accent-cyan)', boxShadow: '0 0 10px var(--accent-cyan)' }}></span>
-                        {content.tag}
-                    </span>
-                </div>
+                        <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#4ade80', display: 'inline-block', flexShrink: 0 }} />
+                        {hero.badge}
+                    </div>
 
-                {/* Main Title */}
-                <h1 className="animate-fade-in hero-title" style={{
-                    fontSize: 'clamp(3rem, 7vw, 5.5rem)', marginBottom: '1.5rem', animationDelay: '0.2s',
-                    lineHeight: '1.1', letterSpacing: '-0.02em', textShadow: '0 10px 30px rgba(0,0,0,0.3)'
-                }}>
-                    {content.title} <br />
-                    <span className="text-gradient hover-trigger" style={{ position: 'relative', display: 'inline-block' }}>
-                        {content.subtitle}
-                    </span>
-                </h1>
+                    {/* Headline */}
+                    <h1 className="anim-1" style={{
+                        fontSize: 'clamp(2.5rem, 5.5vw, 3.75rem)', fontWeight: 900,
+                        lineHeight: 1.1, letterSpacing: '-0.03em',
+                        color: '#fff', marginBottom: '20px',
+                    }}>
+                        {hero.headline1}<br />
+                        <span style={{ color: '#4ade80' }}>{hero.headline2}</span><br />
+                        {hero.headline3}
+                    </h1>
 
-                {/* Description */}
-                <p className="animate-fade-in" style={{
-                    fontSize: 'clamp(1.125rem, 2vw, 1.35rem)', color: 'var(--text-secondary)',
-                    marginBottom: '3rem', animationDelay: '0.3s', maxWidth: '700px', margin: '0 auto 3rem auto', lineHeight: 1.8
-                }}>
-                    {content.description}
-                </p>
+                    {/* Sub */}
+                    <p className="anim-2" style={{
+                        fontSize: 'clamp(1rem, 2vw, 1.125rem)',
+                        color: 'rgba(255,255,255,0.82)',
+                        lineHeight: 1.75, marginBottom: '40px', maxWidth: '560px',
+                        whiteSpace: 'pre-line',
+                    }}>
+                        {hero.sub}
+                    </p>
 
-                {/* Call To Actions */}
-                <div className="animate-fade-in" style={{
-                    display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', animationDelay: '0.4s'
-                }}>
-                    <button className="btn btn-primary" style={{ fontSize: '1.125rem', padding: '1.2rem 2.5rem', borderRadius: '12px' }}>
-                        {content.cta}
-                    </button>
+                    {/* CTAs */}
+                    <div className="anim-3" style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
+                        <a href="#consultation" style={{
+                            display: 'inline-flex', alignItems: 'center', gap: '8px',
+                            padding: '16px 36px', background: '#007A33', color: '#fff',
+                            borderRadius: '100px', fontWeight: 700, fontSize: '1rem',
+                            boxShadow: '0 8px 28px rgba(0,122,51,0.45)',
+                            transition: 'all 0.22s ease',
+                        }}
+                            onMouseEnter={e => { e.currentTarget.style.background = '#005a25'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
+                            onMouseLeave={e => { e.currentTarget.style.background = '#007A33'; e.currentTarget.style.transform = 'translateY(0)'; }}
+                        >
+                            {hero.cta1}
+                            <IconArrowRight size={16} color="#fff" />
+                        </a>
+                        <a href="#services" style={{
+                            display: 'inline-flex', alignItems: 'center', gap: '8px',
+                            padding: '15px 32px',
+                            background: 'rgba(255,255,255,0.14)', backdropFilter: 'blur(8px)',
+                            border: '1.5px solid rgba(255,255,255,0.35)',
+                            color: '#fff', borderRadius: '100px', fontWeight: 600, fontSize: '1rem',
+                            transition: 'all 0.22s ease',
+                        }}
+                            onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.22)'; }}
+                            onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.14)'; }}
+                        >
+                            {hero.cta2}
+                        </a>
+                    </div>
 
-                    {lang === 'EN' && (
-                        <button className="btn btn-outline" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', borderRadius: '12px' }}>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                            </svg>
-                            Zero Fees Guaranteed
-                        </button>
-                    )}
-
-                    {(lang === 'KR' || lang === 'DE') && (
-                        <button className="btn btn-outline" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', borderRadius: '12px' }}>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
-                            Global Presence
-                        </button>
-                    )}
+                    {/* Stats */}
+                    <div className="anim-4" style={{ display: 'flex', gap: '0', marginTop: '60px' }}>
+                        {hero.stats.map(({ num, label }, i) => (
+                            <div key={label} style={{
+                                paddingRight: '32px',
+                                borderRight: i < hero.stats.length - 1 ? '1px solid rgba(255,255,255,0.2)' : 'none',
+                                marginRight: i < hero.stats.length - 1 ? '32px' : '0',
+                            }}>
+                                <div style={{ fontSize: '2rem', fontWeight: 900, color: '#fff', letterSpacing: '-0.03em', lineHeight: 1 }}>{num}</div>
+                                <div style={{ fontSize: '0.8125rem', color: 'rgba(255,255,255,0.6)', fontWeight: 500, marginTop: '5px' }}>{label}</div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
 
-            {/* Embedded CSS for complex animations */}
-            <style>{`
-        .bg-shape {
-          position: absolute;
-          border-radius: 50%;
-          filter: blur(120px);
-          opacity: 0.15;
-          z-index: 0;
-          animation: float 20s infinite alternate ease-in-out;
-        }
-        .shape-blue {
-          top: 10%; left: -10%; width: 50vw; height: 50vw; background: var(--accent-blue);
-          animation-delay: 0s;
-        }
-        .shape-cyan {
-          bottom: -10%; right: -10%; width: 40vw; height: 40vw; background: var(--accent-cyan);
-          animation-delay: -5s;
-        }
-        .shape-emerald {
-          top: 40%; left: 30%; width: 30vw; height: 30vw; background: #10b981;
-          animation-delay: -10s; opacity: 0.1;
-        }
-
-        @keyframes float {
-          0% { transform: translateY(0) scale(1); }
-          50% { transform: translateY(-30px) scale(1.1); }
-          100% { transform: translateY(20px) scale(0.9); }
-        }
-
-        .hover-trigger {
-          transition: transform 0.3s ease;
-        }
-        .hover-trigger:hover {
-          transform: scale(1.02);
-        }
-        
-        .hero-title {
-          font-family: var(--font-display);
-          font-weight: 800;
-        }
-      `}</style>
+            {/* Scroll indicator */}
+            <div style={{
+                position: 'absolute', bottom: '32px', left: '50%', transform: 'translateX(-50%)',
+                zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px',
+            }}>
+                <div style={{
+                    width: '24px', height: '38px', border: '2px solid rgba(255,255,255,0.35)',
+                    borderRadius: '12px', display: 'flex', justifyContent: 'center', paddingTop: '6px',
+                }}>
+                    <div style={{
+                        width: '4px', height: '8px', background: 'rgba(255,255,255,0.6)',
+                        borderRadius: '2px', animation: 'scrollDot 1.8s infinite ease',
+                    }} />
+                </div>
+            </div>
+            <style>{`@keyframes scrollDot{0%{transform:translateY(0);opacity:1}80%{transform:translateY(12px);opacity:0}100%{transform:translateY(0);opacity:0}}`}</style>
         </section>
     );
 }

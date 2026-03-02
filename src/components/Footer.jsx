@@ -1,89 +1,144 @@
 import React from 'react';
+import { IconEnvelope, IconMapPin } from './Icons';
+import VridgeLogo from './VridgeLogo';
 
-export default function Footer({ lang }) {
-    const texts = {
-        EN: {
-            desc: "Global Mobility & Workforce Integration Partner. Directly connecting international talent with European enterprise.",
-            legalTitle: "Legal & License",
-            l1: "HU Recruitment License: Aktív", l2: "Guarantee Deposit: 500,000 HUF", l3: "Registered Seat: Budapest, Hungary",
-            trustTitle: "Trust Notice",
-            trustText: '"Final decision on visa and residence permit issuance rests solely with the Hungarian immigration authorities (OIF)."',
-            privacy: "Privacy Policy", terms: "Terms of Service"
-        },
-        KR: {
-            desc: "글로벌 모빌리티 및 인력 통합 파트너. 다국적 인재와 유럽 기업을 직접 연결합니다.",
-            legalTitle: "법적 면허 및 등록 정보",
-            l1: "헝가리 인력 중개 면허: 활성 (Aktív)", l2: "보증금 예치: 50만 포린트 (HUF)", l3: "본점 소재지: 헝가리 부다페스트",
-            trustTitle: "신뢰 및 면책 고지",
-            trustText: '"비자 및 거주증 발급에 대한 최종 결정권은 전적으로 헝가리 이민국(OIF) 당국에 있습니다."',
-            privacy: "개인정보 처리방침", terms: "이용 약관"
-        },
-        DE: {
-            desc: "Partner für Global Mobility & Workforce Integration. Direkte Verbindung von internationalen Talenten mit europäischen Unternehmen.",
-            legalTitle: "Rechtliches & Lizenzen",
-            l1: "HU Personalvermittlungslizenz: Aktív", l2: "Garantiekaution: 500.000 HUF", l3: "Firmensitz: Budapest, Ungarn",
-            trustTitle: "Vertrauenshinweis",
-            trustText: '"Die endgültige Entscheidung über die Erteilung von Visa und Aufenthaltstiteln liegt ausschließlich bei den ungarischen Einwanderungsbehörden (OIF)."',
-            privacy: "Datenschutzerklärung", terms: "Nutzungsbedingungen"
-        },
-        HU: {
-            desc: "Globális Mobilitási és Munkaerő-integrációs Partner. Közvetlen kapcsolat a nemzetközi tehetségek és az európai vállalatok között.",
-            legalTitle: "Jogi információk és engedélyek",
-            l1: "HU Munkaerő-közvetítői engedély: Aktív", l2: "Garancia letét: 500 000 HUF", l3: "Székhely: Budapest, Magyarország",
-            trustTitle: "Felelősségkizáró nyilatkozat",
-            trustText: '"A vízum és a tartózkodási engedély kiadásáról a végső döntés kizárólag a magyar bevándorlási hatóságok (OIF) hatásköre."',
-            privacy: "Adatvédelmi irányelvek", terms: "Felhasználási feltételek"
-        }
-    };
-
-    const t = texts[lang] || texts['EN'];
+export default function Footer({ t }) {
+    const { footer } = t;
 
     return (
-        <footer style={{
-            background: 'var(--bg-primary)', borderTop: '1px solid var(--border-color)',
-            padding: '4rem 0 2rem 0', marginTop: 'auto'
-        }}>
+        <footer style={{ background: '#0f1923', color: '#fff', padding: '72px 0 0' }}>
             <div className="container">
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '3rem', marginBottom: '3rem' }}>
+                {/* ===== TOP GRID ===== */}
+                <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+                    gap: '48px 40px',
+                    paddingBottom: '56px',
+                    borderBottom: '1px solid rgba(255,255,255,0.08)',
+                    marginBottom: '0',
+                }}>
 
-                    <div>
-                        <div style={{ fontWeight: 700, fontSize: '1.5rem', fontFamily: 'var(--font-display)', marginBottom: '1rem' }}>
-                            <span className="text-gradient">Vridge</span>
+                    {/* Brand Column */}
+                    <div style={{ gridColumn: 'span 1' }}>
+                        {/* Logo */}
+                        <div style={{ marginBottom: '14px' }}>
+                            <VridgeLogo
+                                height={48}
+                                color="#ffffff"
+                                textColor="rgba(255,255,255,0.9)"
+                                showText={true}
+                            />
                         </div>
-                        <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.8 }}>
-                            {t.desc}
+
+                        {/* Tagline */}
+                        <p style={{ fontSize: '0.875rem', color: 'rgba(255,255,255,0.5)', lineHeight: '1.75', marginBottom: '4px' }}>
+                            {footer.tagline}
                         </p>
+
+                        {/* Company legal name */}
+                        <p style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.3)', lineHeight: '1.6', marginBottom: '20px' }}>
+                            {footer.companyName}
+                        </p>
+
+                        {/* Language badges */}
+                        <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+                            {footer.langs.map(lang => (
+                                <span key={lang} style={{
+                                    padding: '4px 10px',
+                                    background: 'rgba(0,122,51,0.2)',
+                                    border: '1px solid rgba(0,122,51,0.4)',
+                                    borderRadius: '100px', fontSize: '0.75rem', color: '#4ade80', fontWeight: 600,
+                                }}>{lang}</span>
+                            ))}
+                        </div>
                     </div>
 
+                    {/* Services Column */}
                     <div>
-                        <h4 style={{ color: 'var(--text-primary)', marginBottom: '1rem' }}>{t.legalTitle}</h4>
-                        <ul style={{ listStyle: 'none', color: 'var(--text-secondary)', fontSize: '0.875rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                            <li>{t.l1}</li>
-                            <li>{t.l2}</li>
-                            <li>{t.l3}</li>
+                        <h4 style={{
+                            fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.1em',
+                            textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', marginBottom: '20px',
+                        }}>{footer.services}</h4>
+                        <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '13px' }}>
+                            {t.services.items.map(({ title }) => (
+                                <li key={title}>
+                                    <a href="#services" style={{
+                                        fontSize: '0.875rem', color: 'rgba(255,255,255,0.62)', transition: 'color 0.18s',
+                                        textDecoration: 'none',
+                                    }}
+                                        onMouseEnter={e => e.target.style.color = '#4ade80'}
+                                        onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.62)'}
+                                    >{title}</a>
+                                </li>
+                            ))}
                         </ul>
                     </div>
 
+                    {/* Contact Column */}
                     <div>
-                        <h4 style={{ color: 'var(--text-primary)', marginBottom: '1rem' }}>{t.trustTitle}</h4>
-                        <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', padding: '1rem', background: 'rgba(255,255,255,0.03)', borderRadius: '8px', borderLeft: '3px solid var(--accent-cyan)' }}>
-                            {t.trustText}
-                        </p>
-                    </div>
+                        <h4 style={{
+                            fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.1em',
+                            textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', marginBottom: '20px',
+                        }}>{footer.contact}</h4>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                            <a href="mailto:visa@vridge.info" style={{
+                                display: 'flex', alignItems: 'center', gap: '10px',
+                                fontSize: '0.875rem', color: 'rgba(255,255,255,0.62)', transition: 'color 0.18s',
+                                textDecoration: 'none',
+                            }}
+                                onMouseEnter={e => e.currentTarget.style.color = '#4ade80'}
+                                onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.62)'}
+                            >
+                                <IconEnvelope size={15} color="rgba(255,255,255,0.45)" />
+                                visa@vridge.info
+                            </a>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.875rem', color: 'rgba(255,255,255,0.62)' }}>
+                                <IconMapPin size={15} color="rgba(255,255,255,0.45)" />
+                                Budapest, Hungary
+                            </div>
+                        </div>
 
+                        {/* Divider */}
+                        <div style={{ margin: '24px 0', borderTop: '1px solid rgba(255,255,255,0.07)' }} />
+
+                        {/* Quick CTA */}
+                        <a href="#consultation" style={{
+                            display: 'inline-flex', alignItems: 'center', gap: '8px',
+                            padding: '11px 20px', background: '#007A33', color: '#fff',
+                            borderRadius: '100px', fontWeight: 700, fontSize: '0.875rem',
+                            transition: 'background 0.2s', textDecoration: 'none',
+                        }}
+                            onMouseEnter={e => e.currentTarget.style.background = '#005a25'}
+                            onMouseLeave={e => e.currentTarget.style.background = '#007A33'}
+                        >
+                            {footer.ctaLabel}
+                        </a>
+                    </div>
                 </div>
 
+                {/* ===== BOTTOM BAR ===== */}
                 <div style={{
-                    borderTop: '1px solid var(--border-color)', paddingTop: '2rem',
-                    display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem'
+                    display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between',
+                    alignItems: 'center', gap: '12px', padding: '24px 0',
                 }}>
-                    <div style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>
-                        &copy; {new Date().getFullYear()} Vridge (GR Bridge Solution Kft.) All rights reserved.
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                        <p style={{ fontSize: '0.8125rem', color: 'rgba(255,255,255,0.3)' }}>
+                            {footer.copyright}
+                        </p>
+                        <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.2)' }}>
+                            {footer.companyLegal}
+                        </p>
                     </div>
-                    <div style={{ display: 'flex', gap: '1.5rem' }}>
-                        <a href="#" style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>{t.privacy}</a>
-                        <a href="#" style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>{t.terms}</a>
+                    <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
+                        {footer.links.map(item => (
+                            <a key={item} href="#" style={{
+                                fontSize: '0.8125rem', color: 'rgba(255,255,255,0.3)', transition: 'color 0.18s', textDecoration: 'none',
+                            }}
+                                onMouseEnter={e => e.target.style.color = '#fff'}
+                                onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.3)'}
+                            >{item}</a>
+                        ))}
                     </div>
                 </div>
 
