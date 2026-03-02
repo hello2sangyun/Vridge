@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vridge - 헝가리 비자 발급 지원 서비스</title>
+    <meta name="description" content="헝가리로 가는 가장 견고하고 빠른 다리, Vridge. 디지털 노마드, 투자자, 취업 준비생을 위한 맞춤형 비자 솔루션.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container nav">
+            <div class="logo">VRIDGE</div>
+            <div class="nav-links">
+                <a href="#services" data-i18n="nav_services">서비스</a>
+                <a href="#process" data-i18n="nav_process">진행 절차</a>
+                <a href="#diagnosis" data-i18n="nav_diagnosis">자가 진단</a>
+                <button class="lang-switch" onclick="toggleLanguage()">EN</button>
+                <a href="#booking" class="cta-btn" data-i18n="cta_main">무료 진단하기</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <h1 data-i18n="hero_title">Vridge와 함께<br>헝가리 생활을 시작하세요</h1>
+            <p data-i18n="hero_subtitle">유럽으로 가는 가장 견고하고 빠른 다리. 전문적인 행정 지원으로 당신의 꿈을 현실로 만듭니다.</p>
+            <div class="stats">
+                <div class="stat-item">
+                    <h3 data-count="98">98%</h3>
+                    <p data-i18n="stat_approval">비자 승인율</p>
+                </div>
+                <div class="stat-item">
+                    <h3>500+</h3>
+                    <p data-i18n="stat_clients">성공적인 리로케이션</p>
+                </div>
+                <div class="stat-item">
+                    <h3>10+</h3>
+                    <p data-i18n="stat_years">전문가 경력</p>
+                </div>
+            </div>
+            <div style="margin-top: 50px;">
+                <a href="#diagnosis" class="cta-btn" data-i18n="cta_main">내 비자 가능성 무료 진단하기</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-i18n="services_title">맞춤형 비자 솔루션</h2>
+                <p data-i18n="services_subtitle">당신의 상황에 가장 적합한 헝가리 비자를 선택하세요.</p>
+            </div>
+            <div class="service-grid">
+                <div class="service-card">
+                    <span class="service-icon">💻</span>
+                    <h3 data-i18n="service1_title">화이트카드 (디지털 노마드)</h3>
+                    <p data-i18n="service1_desc">해외 소득이 있는 원격 근무자를 위한 최적의 유럽 체류 비자.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">🏛️</span>
+                    <h3 data-i18n="service2_title">투자 비자</h3>
+                    <p data-i18n="service2_desc">헝가리 부동산 또는 금융 투자를 통한 영주권 취득의 첫 걸음.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">💼</span>
+                    <h3 data-i18n="service3_title">취업 비자</h3>
+                    <p data-i18n="service3_desc">헝가리 내 기업 채용 및 현지 정착을 위한 전문 행정 대행.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="section" style="background: var(--section-bg);">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-i18n="process_title">투명하고 빠른 4단계 프로세스</h2>
+            </div>
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="step-number">01</div>
+                    <h4 data-i18n="step1_title">상담 신청</h4>
+                    <p data-i18n="step1_desc">전문가와 1:1 상담</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">02</div>
+                    <h4 data-i18n="step2_title">서류 검토</h4>
+                    <p data-i18n="step2_desc">필요 서류 및 자격 체크</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">03</div>
+                    <h4 data-i18n="step3_title">비자 접수</h4>
+                    <p data-i18n="step3_desc">대사관 및 이민국 접수</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">04</div>
+                    <h4 data-i18n="step4_title">발급 완료</h4>
+                    <p data-i18n="step4_desc">비자 수령 및 입국 안내</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="diagnosis" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-i18n="diagnosis_title">1분 비자 자가 진단</h2>
+                <p data-i18n="diagnosis_subtitle">간단한 질문을 통해 나에게 맞는 비자를 확인하세요.</p>
+            </div>
+            <div class="diagnosis-container">
+                <form id="diagnosisForm" class="step-form">
+                    <!-- Step 1 -->
+                    <div class="step active" id="step1">
+                        <div class="form-group">
+                            <label data-i18n="q1">현재 국적은 어디입니까?</label>
+                            <input type="text" name="nationality" placeholder="예: 대한민국" required>
+                        </div>
+                        <button type="button" class="cta-btn" onclick="nextStep(2)" data-i18n="next">다음 단계</button>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="step" id="step2">
+                        <div class="form-group">
+                            <label data-i18n="q2">헝가리 방문 목적은 무엇입니까?</label>
+                            <select name="purpose" required>
+                                <option value="remote" data-i18n="opt_remote">원격 근무 (디지털 노마드)</option>
+                                <option value="invest" data-i18n="opt_invest">투자 및 사업</option>
+                                <option value="work" data-i18n="opt_work">현지 취업</option>
+                            </select>
+                        </div>
+                        <button type="button" class="cta-btn" style="background:#ccc" onclick="nextStep(1)" data-i18n="prev">이전</button>
+                        <button type="button" class="cta-btn" onclick="nextStep(3)" data-i18n="next">다음 단계</button>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="step" id="step3">
+                        <div class="form-group">
+                            <label data-i18n="q3">예상 체류 기간은 얼마입니까?</label>
+                            <select name="duration" required>
+                                <option value="short" data-i18n="opt_short">1년 미만</option>
+                                <option value="long" data-i18n="opt_long">1년 이상</option>
+                                <option value="permanent" data-i18n="opt_perm">영주권 희망</option>
+                            </select>
+                        </div>
+                        <button type="button" class="cta-btn" style="background:#ccc" onclick="nextStep(2)" data-i18n="prev">이전</button>
+                        <button type="button" class="cta-btn" onclick="nextStep(4)" data-i18n="next">마지막 단계</button>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="step" id="step4">
+                        <div class="form-group">
+                            <label data-i18n="q4_name">이름</label>
+                            <input type="text" name="name" placeholder="이름을 입력하세요" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-i18n="q4_email">이메일 주소</label>
+                            <input type="email" name="email" placeholder="example@email.com" required>
+                        </div>
+                        <button type="submit" class="cta-btn" data-i18n="submit_diagnosis">전문가 상담 예약하기</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: var(--section-bg);">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-i18n="docs_title">비자 신청 필수 서류</h2>
+                <p data-i18n="docs_subtitle">종류별 필요 서류를 미리 확인하세요.</p>
+            </div>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span data-i18n="service1_title">화이트카드 (디지털 노마드)</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="checklist-item"><input type="checkbox" checked readonly> <span data-i18n="doc1">소득 증빙 (월 3,000 EUR 이상)</span></div>
+                        <div class="checklist-item"><input type="checkbox" checked readonly> <span data-i18n="doc2">원격 근무 계약서</span></div>
+                        <div class="checklist-item"><input type="checkbox" checked readonly> <span data-i18n="doc3">건강 보험 증명</span></div>
+                        <div class="checklist-item"><input type="checkbox" checked readonly> <span data-i18n="doc4">헝가리 숙소 증빙</span></div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span data-i18n="service2_title">투자 비자</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="checklist-item"><input type="checkbox" checked readonly> <span data-i18n="doc_invest1">자산 증빙 서류</span></div>
+                        <div class="checklist-item"><input type="checkbox" checked readonly> <span data-i18n="doc_invest2">범죄 경력 증명서 (공증)</span></div>
+                        <div class="checklist-item"><input type="checkbox" checked readonly> <span data-i18n="doc_invest3">사업 계획서 (해당 시)</span></div>
+                    </div>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 30px; font-weight: 600; color: var(--secondary-color);" data-i18n="docs_footer">"이 모든 서류의 공증과 번역을 Vridge가 지원합니다."</p>
+        </div>
+    </section>
+
+    <section id="booking" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-i18n="booking_title">상담 예약 및 결제</h2>
+                <p data-i18n="booking_subtitle">간편하게 일정을 예약하고 노쇼 방지 예약금을 결제하세요.</p>
+            </div>
+            <div class="booking-grid">
+                <div class="calendly-placeholder">
+                    <p style="color: #666;">Calendly Embed Space<br>(예약 시스템 로딩 영역)</p>
+                </div>
+                <div class="payment-card">
+                    <h3 data-i18n="pay_title">예약금 결제 (20.00 EUR)</h3>
+                    <p style="margin: 20px 0; color: #666;" data-i18n="pay_desc">원활한 상담 진행을 위해 소액의 예약금을 결제해주셔야 합니다. 실제 서비스 이용 시 결제 금액에서 차감됩니다.</p>
+                    <button class="cta-btn" style="width: 100%;" data-i18n="pay_btn">Stripe로 결제하기</button>
+                    <div class="security-badge">
+                        <span>🔒</span>
+                        <span data-i18n="security">안전한 SSL 보안 결제 환경</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="logo" style="color: white;">VRIDGE</div>
+            <div class="footer-links">
+                <a href="#" data-i18n="footer_terms">이용약관</a>
+                <a href="#" data-i18n="footer_privacy">개인정보처리방침</a>
+                <a href="#" data-i18n="footer_contact">문의하기</a>
+            </div>
+            <p>© 2024 Vridge. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/yournumber" class="floating-chat" title="WhatsApp Chat">
+        💬
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>
