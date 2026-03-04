@@ -19,6 +19,11 @@ export default function VridgeLogo({
     const w = height * 0.9;
     const h = height * ratio;
 
+    // Gradient colors based on the new brand
+    const startColor = "#3B82F6"; // Blue
+    const endColor = "#A855F7";   // Purple
+    const lightningColor = "#FACC15"; // Yellow
+
     return (
         <svg
             width={w}
@@ -28,41 +33,26 @@ export default function VridgeLogo({
             xmlns="http://www.w3.org/2000/svg"
             aria-label="Vridge"
         >
+            <defs>
+                <linearGradient id="vridge_logo_grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor={color === '#ffffff' ? '#ffffff' : startColor} />
+                    <stop offset="100%" stopColor={color === '#ffffff' ? '#ffffff' : endColor} />
+                </linearGradient>
+            </defs>
+
             {/* ===== V SHAPE ===== */}
             <path
                 d="M5 5 L45 82 L85 5 L72 5 L45 58 L18 5 Z"
-                fill={color}
+                fill="url(#vridge_logo_grad)"
             />
 
-            {/* ===== BRIDGE (suspension) inside the V ===== */}
-            {/* Deck / road */}
-            <line x1="16" y1="44" x2="74" y2="44" stroke="white" strokeWidth="2.8" strokeLinecap="round" />
-
-            {/* Left tower */}
-            <line x1="30" y1="32" x2="30" y2="56" stroke="white" strokeWidth="2.2" strokeLinecap="round" />
-            {/* Right tower */}
-            <line x1="60" y1="32" x2="60" y2="56" stroke="white" strokeWidth="2.2" strokeLinecap="round" />
-
-            {/* Main cables (arch) */}
-            <path d="M17 44 Q45 22 73 44" stroke="white" strokeWidth="2" fill="none" strokeLinecap="round" />
-
-            {/* Suspender cables from arch to deck */}
-            {[22, 27, 33, 38, 45, 52, 57, 63, 68].map((x) => {
-                // point on the catenary y = 22 + (x-17)(x-73)*(-0.012)... approx
-                const t = (x - 45) / 28; // -1 to 1
-                const cy = 44 - 22 * (1 - t * t); // parabola: peak at center
-                return (
-                    <line
-                        key={x}
-                        x1={x} y1={cy}
-                        x2={x} y2={44}
-                        stroke="white"
-                        strokeWidth="1.2"
-                        strokeLinecap="round"
-                        opacity="0.85"
-                    />
-                );
-            })}
+            {/* ===== LIGHTNING BOLT in the center ===== */}
+            <path
+                d="M48 24 L36 44 H44 L42 62 L56 38 H48 L50 24 Z"
+                fill={lightningColor}
+                stroke={color === '#ffffff' ? '#000000' : 'none'}
+                strokeWidth="1"
+            />
 
             {/* ===== WORDMARK ===== */}
             {showText && (
@@ -74,7 +64,7 @@ export default function VridgeLogo({
                     fontWeight="800"
                     fontSize="22"
                     letterSpacing="-0.5"
-                    fill={tc}
+                    fill={color === '#ffffff' ? '#ffffff' : (tc === '#007A33' ? '#111827' : tc)}
                 >
                     Vridge
                 </text>

@@ -29,12 +29,12 @@ export default function Hero({ t }) {
                     <div className="anim-0" style={{
                         display: 'inline-flex', alignItems: 'center', gap: '8px',
                         padding: '6px 16px', marginBottom: '28px',
-                        background: 'rgba(0,122,51,0.85)', backdropFilter: 'blur(8px)',
+                        background: 'rgba(59,130,246,0.5)', backdropFilter: 'blur(8px)',
                         border: '1px solid rgba(255,255,255,0.2)',
                         borderRadius: '100px', color: '#fff',
                         fontSize: '0.8125rem', fontWeight: 600,
                     }}>
-                        <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#4ade80', display: 'inline-block', flexShrink: 0 }} />
+                        <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#FACC15', display: 'inline-block', flexShrink: 0 }} />
                         {hero.badge}
                     </div>
 
@@ -45,7 +45,7 @@ export default function Hero({ t }) {
                         color: '#fff', marginBottom: '20px',
                     }}>
                         {hero.headline1}<br />
-                        <span style={{ color: '#4ade80' }}>{hero.headline2}</span><br />
+                        <span style={{ color: '#FACC15' }}>{hero.headline2}</span><br />
                         {hero.headline3}
                     </h1>
 
@@ -63,13 +63,13 @@ export default function Hero({ t }) {
                     <div className="anim-3" style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
                         <a href="#consultation" style={{
                             display: 'inline-flex', alignItems: 'center', gap: '8px',
-                            padding: '16px 36px', background: '#007A33', color: '#fff',
+                            padding: '16px 36px', background: '#3B82F6', color: '#fff',
                             borderRadius: '100px', fontWeight: 700, fontSize: '1rem',
-                            boxShadow: '0 8px 28px rgba(0,122,51,0.45)',
+                            boxShadow: '0 8px 28px rgba(59,130,246,0.3)',
                             transition: 'all 0.22s ease',
                         }}
-                            onMouseEnter={e => { e.currentTarget.style.background = '#005a25'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
-                            onMouseLeave={e => { e.currentTarget.style.background = '#007A33'; e.currentTarget.style.transform = 'translateY(0)'; }}
+                            onMouseEnter={e => { e.currentTarget.style.background = '#2563EB'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
+                            onMouseLeave={e => { e.currentTarget.style.background = '#3B82F6'; e.currentTarget.style.transform = 'translateY(0)'; }}
                         >
                             {hero.cta1}
                             <IconArrowRight size={16} color="#fff" />

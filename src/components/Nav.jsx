@@ -95,9 +95,9 @@ export default function Nav({ lang, setLang, t }) {
                                 <button key={code} onClick={() => setLang(code)} title={label} style={{
                                     padding: '5px 11px', borderRadius: '100px', fontSize: '0.8125rem', fontWeight: 700,
                                     cursor: 'pointer', transition: 'all 0.2s ease',
-                                    background: lang === code ? '#007A33' : 'transparent',
+                                    background: lang === code ? '#3B82F6' : 'transparent',
                                     color: lang === code ? '#fff' : (scrolled ? '#6b7280' : 'rgba(255,255,255,0.75)'),
-                                    boxShadow: lang === code ? '0 2px 8px rgba(0,122,51,0.3)' : 'none', border: 'none',
+                                    boxShadow: lang === code ? '0 2px 8px rgba(59,130,246,0.3)' : 'none', border: 'none',
                                 }}>{code}</button>
                             ))}
                         </div>
@@ -105,13 +105,13 @@ export default function Nav({ lang, setLang, t }) {
                         {/* CTA */}
                         <a href="#consultation" style={{
                             display: 'inline-flex', alignItems: 'center', gap: '6px',
-                            padding: '10px 20px', background: '#007A33', color: '#fff',
+                            padding: '10px 20px', background: '#3B82F6', color: '#fff',
                             borderRadius: '100px', fontWeight: 700, fontSize: '0.875rem',
-                            boxShadow: '0 4px 14px rgba(0,122,51,0.3)', whiteSpace: 'nowrap',
+                            boxShadow: '0 4px 14px rgba(59,130,246,0.3)', whiteSpace: 'nowrap',
                             transition: 'all 0.2s ease', textDecoration: 'none',
                         }}
-                            onMouseEnter={e => { e.currentTarget.style.background = '#005a25'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
-                            onMouseLeave={e => { e.currentTarget.style.background = '#007A33'; e.currentTarget.style.transform = 'translateY(0)'; }}
+                            onMouseEnter={e => { e.currentTarget.style.background = '#2563EB'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
+                            onMouseLeave={e => { e.currentTarget.style.background = '#3B82F6'; e.currentTarget.style.transform = 'translateY(0)'; }}
                         >
                             {t.nav.cta}
                             <IconArrowRight size={14} color="#fff" />
@@ -131,7 +131,7 @@ export default function Nav({ lang, setLang, t }) {
                                 <button key={code} onClick={() => setLang(code)} style={{
                                     padding: '4px 9px', borderRadius: '100px', fontSize: '0.75rem', fontWeight: 700,
                                     cursor: 'pointer', transition: 'all 0.2s ease',
-                                    background: lang === code ? '#007A33' : 'transparent',
+                                    background: lang === code ? '#3B82F6' : 'transparent',
                                     color: lang === code ? '#fff' : (scrolled ? '#6b7280' : 'rgba(255,255,255,0.8)'),
                                     border: 'none',
                                 }}>{code}</button>
@@ -175,13 +175,13 @@ export default function Nav({ lang, setLang, t }) {
                                 fontSize: '1rem', fontWeight: 600, color: '#374151',
                                 transition: 'background 0.15s', textDecoration: 'none',
                             }}
-                                onMouseEnter={e => { e.currentTarget.style.background = '#f0fdf4'; e.currentTarget.style.color = '#007A33'; }}
+                                onMouseEnter={e => { e.currentTarget.style.background = '#eff6ff'; e.currentTarget.style.color = '#3B82F6'; }}
                                 onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#374151'; }}
                             >{label}</a>
                         ))}
                         <a href="#consultation" onClick={closeMenu} style={{
                             display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
-                            marginTop: '12px', padding: '14px', background: '#007A33', color: '#fff',
+                            marginTop: '12px', padding: '14px', background: '#3B82F6', color: '#fff',
                             borderRadius: '12px', fontWeight: 700, fontSize: '1rem', textDecoration: 'none',
                         }}>
                             {t.nav.cta}

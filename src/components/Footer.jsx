@@ -47,9 +47,9 @@ export default function Footer({ t }) {
                             {footer.langs.map(lang => (
                                 <span key={lang} style={{
                                     padding: '4px 10px',
-                                    background: 'rgba(0,122,51,0.2)',
-                                    border: '1px solid rgba(0,122,51,0.4)',
-                                    borderRadius: '100px', fontSize: '0.75rem', color: '#4ade80', fontWeight: 600,
+                                    background: 'rgba(59,130,246,0.15)',
+                                    border: '1px solid rgba(59,130,246,0.3)',
+                                    borderRadius: '100px', fontSize: '0.75rem', color: '#60a5fa', fontWeight: 600,
                                 }}>{lang}</span>
                             ))}
                         </div>
@@ -68,7 +68,7 @@ export default function Footer({ t }) {
                                         fontSize: '0.875rem', color: 'rgba(255,255,255,0.62)', transition: 'color 0.18s',
                                         textDecoration: 'none',
                                     }}
-                                        onMouseEnter={e => e.target.style.color = '#4ade80'}
+                                        onMouseEnter={e => e.target.style.color = '#60a5fa'}
                                         onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.62)'}
                                     >{title}</a>
                                 </li>
@@ -88,7 +88,7 @@ export default function Footer({ t }) {
                                 fontSize: '0.875rem', color: 'rgba(255,255,255,0.62)', transition: 'color 0.18s',
                                 textDecoration: 'none',
                             }}
-                                onMouseEnter={e => e.currentTarget.style.color = '#4ade80'}
+                                onMouseEnter={e => e.currentTarget.style.color = '#60a5fa'}
                                 onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.62)'}
                             >
                                 <IconEnvelope size={15} color="rgba(255,255,255,0.45)" />
@@ -106,12 +106,12 @@ export default function Footer({ t }) {
                         {/* Quick CTA */}
                         <a href="#consultation" style={{
                             display: 'inline-flex', alignItems: 'center', gap: '8px',
-                            padding: '11px 20px', background: '#007A33', color: '#fff',
+                            padding: '11px 20px', background: '#3B82F6', color: '#fff',
                             borderRadius: '100px', fontWeight: 700, fontSize: '0.875rem',
                             transition: 'background 0.2s', textDecoration: 'none',
                         }}
-                            onMouseEnter={e => e.currentTarget.style.background = '#005a25'}
-                            onMouseLeave={e => e.currentTarget.style.background = '#007A33'}
+                            onMouseEnter={e => e.currentTarget.style.background = '#2563EB'}
+                            onMouseLeave={e => e.currentTarget.style.background = '#3B82F6'}
                         >
                             {footer.ctaLabel}
                         </a>
