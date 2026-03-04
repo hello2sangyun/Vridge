@@ -56,7 +56,7 @@ export default function Nav({ lang, setLang, t }) {
                 transition: 'all 0.3s ease',
             }}>
                 <div style={{
-                    maxWidth: '1320px', margin: '0 auto', padding: '0 20px',
+                    maxWidth: '1160px', margin: '0 auto', padding: '0 20px',
                     display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                     height: '68px',
                 }}>

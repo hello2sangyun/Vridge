@@ -22,8 +22,8 @@ export default function Services({ t }) {
 
                 <div style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-                    gap: '20px',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                    gap: '16px',
                 }}>
                     {services.items.map(({ title, desc, details }, i) => {
                         const Icon = SERVICE_ICONS[i];

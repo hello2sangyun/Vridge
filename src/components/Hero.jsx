@@ -24,7 +24,7 @@ export default function Hero({ t }) {
 
             {/* Content */}
             <div className="container" style={{ position: 'relative', zIndex: 2, paddingTop: '80px', paddingBottom: '80px' }}>
-                <div style={{ maxWidth: '900px' }}>
+                <div style={{ maxWidth: '680px' }}>
                     {/* Badge */}
                     <div className="anim-0" style={{
                         display: 'inline-flex', alignItems: 'center', gap: '8px',
