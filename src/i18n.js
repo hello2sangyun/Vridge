@@ -380,7 +380,7 @@ Users have the right to access, correct, or delete their personal info at any ti
             cta: 'Ingyenes konzultáció indítása most',
             items: [
                 { title: 'Helyi hálózat', desc: 'Szoros partnerség a hatóságokkal' },
-                { title: 'Egyéni 1:1  konzultáció', desc: 'Testreszubott vízumstratégia' },
+                { title: 'Egyéni 1:1  konzultáció', desc: 'Testreszabott vízumstratégia' },
                 { title: 'Teljes folyamat átláthatósága', desc: 'Állandó folyamatkövetés' },
                 { title: 'Segítségnyújtás három nyelven', desc: 'KO, EN, HU ' },
                 { title: 'Feldolgozás', desc: '30%-kal gyorsabb ügyintézés' },
