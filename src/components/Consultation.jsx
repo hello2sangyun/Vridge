@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { IconCalendar, IconCheck, IconClock, IconGlobe, IconBellAlert, IconEnvelope } from './Icons';
 
 // ✏️  여기에 본인의 Calendly URL을 입력하세요
-const CALENDLY_URL = 'https://calendly.com/visa-vridge/hungary-visa-review';
+const CALENDLY_URL = 'https://calendly.com/visa-vridge/30min';
 
 const BENEFIT_ICONS = [IconCheck, IconClock, IconGlobe, IconBellAlert];
 
