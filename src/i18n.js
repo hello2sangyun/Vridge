@@ -359,7 +359,7 @@ Users have the right to access, correct, or delete their personal info at any ti
                 {
                     title: 'Családegyesítés',
                     desc: 'Kísérő családtagok tartózkodási engedélyének kérelmezése és megújítása.',
-                    details: ['Családi kapcsolatot igazoló okiratok hitelesítése', 'Kíérő okiratok hitelesítése', 'Oktatással kapcsolatos iratok segítése'],
+                    details: ['Családi kapcsolatot igazoló okiratok hitelesítése', 'Kísérő okiratok hitelesítése', 'Oktatással kapcsolatos iratok segítése'],
                 },
                 {
                     title: 'EU / Nemzeti tartózkodási kártya',
