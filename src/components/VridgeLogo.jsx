@@ -46,13 +46,19 @@ export default function VridgeLogo({
                 fill="url(#vridge_logo_grad)"
             />
 
-            {/* ===== LIGHTNING BOLT in the center ===== */}
-            <path
-                d="M48 24 L36 44 H44 L42 62 L56 38 H48 L50 24 Z"
-                fill={lightningColor}
-                stroke={color === '#ffffff' ? '#000000' : 'none'}
-                strokeWidth="1"
-            />
+            {/* ===== BRIDGE in the center ===== */}
+            <g stroke={color === '#ffffff' ? '#ffffff' : startColor} strokeWidth="1.5" strokeLinecap="round">
+                {/* Main Cable */}
+                <path d="M20 15 Q45 55 70 15" fill="none" strokeWidth="2" />
+                {/* Suspension Lines */}
+                <line x1="30" y1="23" x2="30" y2="40" />
+                <line x1="37" y1="30" x2="37" y2="48" />
+                <line x1="45" y1="33" x2="45" y2="52" />
+                <line x1="53" y1="30" x2="53" y2="48" />
+                <line x1="60" y1="23" x2="60" y2="40" />
+                {/* Roadway */}
+                <line x1="18" y1="38" x2="72" y2="38" strokeWidth="2" />
+            </g>
 
             {/* ===== WORDMARK ===== */}
             {showText && (
