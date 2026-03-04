@@ -307,7 +307,7 @@ Users have the right to access, correct, or delete their personal info at any ti
         hero: {
             badge: 'Magyarországon bejegyzett vízumügynökség',
             headline1: 'A legmegbízhatóbb',
-            headline2: 'összeköttetés a Magyarországra,',
+            headline2: 'összeköttetés Magyarországra,',
             headline3: 'a Vridge',
             sub: 'A komplex hatósági ügyintézési akadályokon és a nyelvi korlátokon túllépve valóra váltjuk magyarországi álmát. Optimális vízummegoldások helyi szakértőinktől.',
             cta1: 'Időpontfoglalás ingyenes 1:1 konzultációra',
