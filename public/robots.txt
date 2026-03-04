@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vridge.info/sitemap.xml
