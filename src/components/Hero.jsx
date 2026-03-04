@@ -12,7 +12,7 @@ export default function Hero({ t }) {
             {/* Background */}
             <div style={{
                 position: 'absolute', inset: 0,
-                backgroundImage: 'url(/budapest.png)',
+                backgroundImage: 'url(/szechenyi-bridge.png)',
                 backgroundSize: 'cover', backgroundPosition: 'center 40%',
                 filter: 'brightness(0.52)', transform: 'scale(1.03)', zIndex: 0,
             }} />
@@ -24,7 +24,7 @@ export default function Hero({ t }) {
 
             {/* Content */}
             <div className="container" style={{ position: 'relative', zIndex: 2, paddingTop: '80px', paddingBottom: '80px' }}>
-                <div style={{ maxWidth: '680px' }}>
+                <div style={{ maxWidth: '900px' }}>
                     {/* Badge */}
                     <div className="anim-0" style={{
                         display: 'inline-flex', alignItems: 'center', gap: '8px',

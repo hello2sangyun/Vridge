@@ -3,7 +3,7 @@ const COMPANY = {
     name: 'Vridge',
     legal: 'GR Bridge Solution Kft.',
     email: 'visa@vridge.info',
-    location: 'Budapest, Hungary',
+    location: '1123 Budapest, Nagyenyed utca 5.',
 };
 
 export const i18n = {
@@ -59,12 +59,12 @@ export const i18n = {
                 {
                     title: '취업 비자 (D-Visa)',
                     desc: '주재원 및 현지 채용 거주증 발급. 헝가리 기업과의 고용 계약을 바탕으로 최적의 체류 자격을 취득합니다.',
-                    details: ['고용계약서 검토 및 준비', '대사관 접수 대행', '거주증 신청 동행', '사후 관리 지원'],
+                    details: ['고용관계 분석 및 연결', '대사관 접수 대행', '거주증 신청 동행'],
                 },
                 {
-                    title: '사업 / 투자 비자',
-                    desc: '법인 설립 및 사업자 비자 컨설팅. 헝가리 내 사업 기회를 찾는 기업가에게 맞춤형 솔루션을 제공합니다.',
-                    details: ['헝가리 법인 설립 지원', '사업계획서 컨설팅', '투자 요건 분석', '은행 계좌 개설 동행'],
+                    title: '자영업 거주 허가',
+                    desc: '개인사업자 및 자영업자를 위한 거주증 컨설팅. 헝가리 내 자영업 활동을 희망하는 분들께 최적의 솔루션을 제공합니다.',
+                    details: ['현지 자영업 조건 확보', '사업계획서 컨설팅', '학력/자격 증명 모니터링', '기타 행정 지원 (은행 계좌, Ügyfélkapu 등)'],
                 },
                 {
                     title: '가족 초청',
@@ -72,9 +72,9 @@ export const i18n = {
                     details: ['가족관계 서류 공증', '동반 거주증 신청', '학교 등록 지원', '주소 등록 대행'],
                 },
                 {
-                    title: '거주증 갱신',
-                    desc: '만료 전 안전하고 빠른 갱신 지원. 체류 기간 만료를 놓치지 않도록 사전 알림 서비스도 제공합니다.',
-                    details: ['만료일 사전 알림 서비스', '갱신 서류 일괄 준비', '이민국 접수 대행', '갱신 결과 추적'],
+                    title: '영주권 (EU / 국가)',
+                    desc: 'EU 영주권 및 헝가리 국가 영주권 취득 지원. 장기 체류자를 위한 가장 안정적인 체류 자격입니다.',
+                    details: ['신청 자격 요건 분석', '헝가리 헌법 기초 지식 시험(국가 고시) 교육'],
                 },
             ],
         },
@@ -115,10 +115,41 @@ export const i18n = {
             services: '서비스',
             contact: '연락처',
             ctaLabel: '무료 상담 예약',
+            location: COMPANY.location,
             langs: ['한국어', '영어', '헝가리어'],
-            links: ['이용약관', '개인정보처리방침', '문의하기'],
+            links: [
+                { text: '이용약관', path: '/terms' },
+                { text: '개인정보처리방침', path: '/privacy' },
+                { text: '문의하기', path: `mailto:${COMPANY.email}` }
+            ],
             copyright: `© 2025 ${COMPANY.name}. All rights reserved.`,
         },
+        legal: {
+            termsTitle: '이용약관',
+            termsContent: `제1조 (목적)
+본 약관은 GR Bridge Solution Kft.(이하 "회사")가 제공하는 Vridge 서비스의 이용조건 및 절차에 관한 사항을 규정함을 목적으로 합니다.
+
+제2조 (서비스의 제공)
+회사는 헝가리 비자 및 거주증 관련 컨설팅 및 행정 대행 서비스를 제공합니다.
+
+제3조 (헝가리 법률의 준수)
+본 서비스의 이용 및 해석은 헝가리 법령(특히 전자상거래 서비스에 관한 2001년 법률 제CVIII호 등)을 따릅니다.
+
+제4조 (면책 사항)
+회사는 최선의 노력을 다하지만, 비자 승인 최종 결정권은 헝가리 당국(이민국 및 대사관)에 있으며 결과에 대한 법적 책임은 당국에 있습니다.`,
+            privacyTitle: '개인정보처리방침',
+            privacyContent: `본 방침은 헝가리 및 EU의 개인정보 보호법(GDPR)을 준수합니다.
+
+1. 개인정보 수집 및 이용 목적
+상담 예약 및 비자 관련 행정 서비스 제공을 위해 최소한의 연락처 정보만을 수집합니다.
+
+2. 개인정보 보관 관련 중요 공지
+Vridge는 고객의 여권 사본, 주민등록번호 등 민감한 개인 식별 정보(Personal ID)를 별도의 데이터베이스에 저장하지 않습니다. 모든 행정 서류는 해당 업무 종료 후 즉시 파기하거나 고객에게 반환하는 것을 원칙으로 합니다.
+
+3. 정보주체의 권리
+사용자는 언제든지 자신의 개인정보 열람, 수정, 삭제를 요청할 수 있습니다.`,
+            back: '홈으로 돌아가기'
+        }
     },
 
     EN: {
@@ -173,12 +204,12 @@ export const i18n = {
                 {
                     title: 'Employment Visa (D-Visa)',
                     desc: 'Residence permit issuance for expats and local hires. Obtain optimal residency status based on your Hungarian employment contract.',
-                    details: ['Employment contract review', 'Embassy submission service', 'Residence permit assistance', 'Post-issuance support'],
+                    details: ['Employment connection review', 'Embassy submission service', 'Residence permit assistance', 'Post-issuance support'],
                 },
                 {
-                    title: 'Business / Investment Visa',
-                    desc: 'Company formation and business visa consulting. Tailored solutions for entrepreneurs seeking business opportunities in Hungary.',
-                    details: ['Hungarian company formation', 'Business plan consulting', 'Investment requirement analysis', 'Bank account opening assistance'],
+                    title: 'Self-employment residence permit',
+                    desc: 'Residence permit consulting for individual entrepreneurs and self-employed individuals. Optimal solutions for those seeking self-employment in Hungary.',
+                    details: ['Making condition for self-employment in Hungary', 'Business plan consulting', 'Monitoring certificate of qualification', 'Helping in other governmental issues (example: opening bank account, making individual online portal etc...)'],
                 },
                 {
                     title: 'Family Reunification',
@@ -186,9 +217,9 @@ export const i18n = {
                     details: ['Family relation document notarization', 'Accompanying residence permit', 'School enrollment support', 'Address registration service'],
                 },
                 {
-                    title: 'Residence Permit Renewal',
-                    desc: 'Safe and fast renewal support before expiration. We provide advance notifications so you never miss your stay deadline.',
-                    details: ['Expiry date advance notification', 'Bulk renewal document preparation', 'Immigration office submission', 'Renewal result tracking'],
+                    title: 'EU / National permanent residence permit',
+                    desc: 'Support for obtaining EU and Hungarian national permanent residence cards. The most stable status for long-term residents.',
+                    details: ['Application eligibility analysis', 'Education for the Hungarian Constitutional Exam'],
                 },
             ],
         },
@@ -229,49 +260,80 @@ export const i18n = {
             services: 'Services',
             contact: 'Contact',
             ctaLabel: 'Book Free Consultation',
+            location: COMPANY.location,
             langs: ['Korean', 'English', 'Hungarian'],
-            links: ['Terms of Use', 'Privacy Policy', 'Contact Us'],
+            links: [
+                { text: 'Terms of Use', path: '/terms' },
+                { text: 'Privacy Policy', path: '/privacy' },
+                { text: 'Contact Us', path: `mailto:${COMPANY.email}` }
+            ],
             copyright: `© 2025 ${COMPANY.name}. All rights reserved.`,
         },
+        legal: {
+            termsTitle: 'Terms of Use',
+            termsContent: `Article 1 (Purpose)
+These terms sets out the conditions and procedures for using the Vridge service provided by GR Bridge Solution Kft. (the "Company").
+
+Article 2 (Services)
+The Company provides consulting and administrative agency services related to Hungarian visas and residence permits.
+
+Article 3 (Compliance with Hungarian Law)
+Usage of this service is governed by Hungarian laws, including Act CVIII of 2001 on certain issues of electronic commerce services.
+
+Article 4 (Disclaimer)
+While we strive for success, the final decision on visa approval rests with the Hungarian authorities (National Directorate-General for Aliens Policing and Embassies).`,
+            privacyTitle: 'Privacy Policy',
+            privacyContent: `This policy complies with the Hungarian and EU General Data Protection Regulation (GDPR).
+
+1. Purpose of Collection
+We collect only essential contact information for consultation and visa-related services.
+
+2. Important Notice on Data Storage
+Vridge DOES NOT store sensitive personal identification information (such as passport copies or national ID numbers) in any separate database. All administrative documents are, as a rule, destroyed or returned to the customer immediately after the task is completed.
+
+3. User Rights
+Users have the right to access, correct, or delete their personal info at any time.`,
+            back: 'Back to Home'
+        }
     },
 
     HU: {
         nav: {
             services: 'Szolgáltatások',
-            why: 'Miért Vridge',
+            why: 'Miért a Vridge',
             consultation: 'Időpontfoglalás',
             cta: 'Ingyenes tanácsadás',
         },
         hero: {
             badge: 'Magyarországon bejegyzett vízumügynökség',
             headline1: 'A legmegbízhatóbb',
-            headline2: 'híd Magyarországra,',
-            headline3: 'Vridge',
-            sub: 'A bürokratikus akadályokon és a nyelvi korlátokon túllépve\nvalóra váltjuk magyarországi álmát.\nOptimális vízummegoldások helyi szakértőktől.',
-            cta1: 'Ingyenes 1:1 konzultáció foglalása',
+            headline2: 'összeköttetés a Magyarországra,',
+            headline3: 'a Vridge',
+            sub: 'A komplex hatósági ügyintézési akadályokon és a nyelvi korlátokon túllépve valóra váltjuk magyarországi álmát. Optimális vízummegoldások helyi szakértőinktől.',
+            cta1: 'Időpontfoglalás ingyenes 1:1 konzultációra',
             cta2: 'Szolgáltatások megtekintése',
             stats: [
-                { num: '98%', label: 'Engedélyezési arány' },
+                { num: '98%', label: 'Pozitív döntések aránya' },
                 { num: '500+', label: 'Sikeres ügy' },
                 { num: '3 nyelv', label: 'KO · EN · HU' },
             ],
         },
         problems: {
             tag: 'Ismerős a helyzet?',
-            title: 'Még mindig küzd a\nmagyar vízummal?',
-            sub: 'Sokan érzik magukat túlterhelve a bonyolult bevándorlási folyamat miatt.\nA Vridge minden lépésnél Önnel van.',
+            title: 'Még mindig gondjai vannak a magyarországi tartózkodási engedélyekkel?',
+            sub: 'Sokan nem tudják, mihez kezdjenek a bonyolult hatósági ügyintézési folyamatokkal. A Vridge minden lépésnél Önnel van.',
             items: [
                 {
                     title: 'Nyelvi akadály',
-                    desc: 'Az összes, magyar nyelven zajló hatósági ügyintézést profi tolmácsokkal közösen teljesen elvégezzük.',
+                    desc: 'Az összes, magyar nyelven zajló hatósági ügyintézést profi tolmácsokkal közösen végezzük. ',
                 },
                 {
                     title: 'Bonyolult dokumentumok',
-                    desc: 'A folyamatosan változó bevándorlási törvényektől a közjegyzői eljárásokig, tökéletes iratgyűjtést biztosítunk.',
+                    desc: 'A folyamatosan változó bevándorlási és munkaügyi törvényektől a közjegyzői eljárásokig, tökéletes dokumentációt rakunk össze. ',
                 },
                 {
                     title: 'Bizonytalan eredmény',
-                    desc: 'A 98%-os vízumkiadási arányunkra alapozva stratégiai, kockázatminimalizált megközelítést kínálunk.',
+                    desc: 'A 98%-os sikeres eljárási arányunkra alapozva stratégiai, kockázatminimalizált megközelítést kínálunk.',
                 },
             ],
         },
@@ -287,22 +349,22 @@ export const i18n = {
                 {
                     title: 'Munkavállalói vízum (D-vízum)',
                     desc: 'Tartózkodási engedély kiállítása kiküldött munkavállalók és helyi alkalmazottak részére.',
-                    details: ['Munkaszerződés áttekintése', 'Nagykövetségi benyújtás', 'Tartózkodási engedély kérelem', 'Kiadás utáni támogatás'],
+                    details: ['Munkavállalói kapcsolatok ellenőrzése', 'Nagykövetségi benyújtás', 'Tartózkodási engedély iránti kérelem'],
                 },
                 {
-                    title: 'Vállalkozói / befektetői vízum',
-                    desc: 'Cégalapítás és vállalkozói vízum tanácsadás. Testreszabott megoldások magyarországi lehetőségeket kereső vállalkozóknak.',
-                    details: ['Magyar cégalapítás', 'Üzleti terv tanácsadás', 'Befektetési követelmények', 'Bankszámla-nyitás segítséggel'],
+                    title: 'Önfoglalkoztatási célú tartózkodási engedély',
+                    desc: 'Tanácsadás egyéni vállalkozók részére. Optimális megoldások a magyarországi önfoglalkoztatást keresőknek.',
+                    details: ['Önfoglalkoztatás feltételeinek biztosítása ', 'Üzleti terv tanácsadás', 'Végzettség honosítási folyamat követése', 'Hatósági ügyintézés (bankszámla nyitás, ügyfélkapu nyitás stb...)'],
                 },
                 {
                     title: 'Családegyesítés',
                     desc: 'Kísérő családtagok tartózkodási engedélyének kérelmezése és megújítása.',
-                    details: ['Rokonsági okiratok hitelesítése', 'Kísérő tartózkodási engedély', 'Iskolai beiratkozás', 'Lakóhely-bejelentés'],
+                    details: ['Családi kapcsolatot igazoló okiratok hitelesítése', 'Kíérő okiratok hitelesítése', 'Oktatással kapcsolatos iratok segítése'],
                 },
                 {
-                    title: 'Tartózkodási engedély megújítása',
-                    desc: 'Biztonságos és gyors megújítási támogatás lejárat előtt. Előzetes értesítéssel gondoskodunk határidői betartásáról.',
-                    details: ['Lejárati dátum előzetes értesítése', 'Megújítási dokumentumok', 'Bevándorlási hivatal benyújtás', 'Megújítás követése'],
+                    title: 'EU / Nemzeti tartózkodási kártya',
+                    desc: 'EU és nemzeti letelepedési engedélyek ügyintézése. A legstabilabb státusz hosszú távú tartózkodás esetén.',
+                    details: ['Kérelem benyújtásának feltételei', 'Alkotmányos alapismeretek vizsgára való felkészítés'],
                 },
             ],
         },
@@ -311,25 +373,25 @@ export const i18n = {
             title: 'Miért válassza a Vridge-t?',
             sub: 'Az ok, amiért tucatnyi vízumügynökség közül a Vridge-t kell választania.\nAz eredmények magukért beszélnek.',
             stats: [
-                { num: '98%', label: 'Engedélyezési arány' },
+                { num: '98%', label: 'Pozitív döntések aránya' },
                 { num: '500+', label: 'Sikeres ügy' },
                 { num: '5+ év', label: 'Magyarországi tapasztalat' },
             ],
             cta: 'Ingyenes konzultáció indítása most',
             items: [
-                { title: 'Budapesti helyi hálózat', desc: 'Szoros partnerséget tartunk fenn a magyar bevándorlási hivatalokkal, nagykövetségekkel és helyi ügyvédi irodákkal.' },
-                { title: 'Egyéni 1:1 diagnózis', desc: 'Nem egységes szolgáltatás, hanem minden ügyfél egyedi helyzetéhez és céljaihoz igazított optimális vízumstratégia.' },
-                { title: 'Teljes folyamat átláthatósága', desc: 'Az iratbenyújtástól a végső kiadásig minden lépést valós időben osztunk meg Önnel.' },
-                { title: 'Háromnyelvű támogatás', desc: 'Minden ügyet koreai, angol és magyar nyelven intézünk. Nincs veszteség a nyelvi akadályok miatt.' },
-                { title: 'Gyors feldolgozási sebesség', desc: 'Magyar helyi partnerségeinknek köszönhetően átlagosan 30%-kal gyorsabb feldolgozást garantálunk.' },
-                { title: 'Magas jóváhagyási arány', desc: '98%-os vízumkiadási arány. Nehéz esetekben sem adjuk fel. Ingyenes újrabenyújtást biztosítunk elutasítás esetén.' },
+                { title: 'Helyi hálózat', desc: 'Szoros partnerség a hatóságokkal' },
+                { title: 'Egyéni 1:1  konzultáció', desc: 'Testreszubott vízumstratégia' },
+                { title: 'Teljes folyamat átláthatósága', desc: 'Állandó folyamatkövetés' },
+                { title: 'Segítségnyújtás három nyelven', desc: 'KO, EN, HU ' },
+                { title: 'Feldolgozás', desc: '30%-kal gyorsabb ügyintézés' },
+                { title: 'Magas jóváhagyási arány', desc: '98%, ellenkező esetben ingyenes újraigénylés' },
             ],
         },
         consult: {
             tag: 'Ingyenes tanácsadás',
-            title: 'Tervezze meg új\nkezdeti Magyarországon.',
+            title: 'Tervezzen egy új kezdetet Magyarországon. ',
             sub: 'Válassza ki a kívánt időpontot az alábbi naptárból,\nés szakértőnk 1:1-ben segít Önnek.',
-            benefits: ['100% ingyenes', '30 perces mélydiagnózis', 'Magyar nyelven', 'Válasz 24 órán belül'],
+            benefits: ['100% ingyenes', '30 perces konzultáció', 'Magyar nyelven', 'Válasz 24 órán belül'],
             calendlyTitle: 'Calendly widget helye',
             calendlyDesc: 'Egyszerűen illessze be a Calendly beágyazó kódját erre a területre\na valós idejű foglalási rendszer azonnali elkészítéséhez.',
             calendlyHint: 'Calendly fiók létrehozása → Esemény beállítása → "Embed" gombra kattintás → Beillesztés ide',
@@ -343,9 +405,40 @@ export const i18n = {
             services: 'Szolgáltatások',
             contact: 'Kapcsolat',
             ctaLabel: 'Ingyenes tanácsadás',
+            location: COMPANY.location,
             langs: ['Koreai', 'Angol', 'Magyar'],
-            links: ['Felhasználási feltételek', 'Adatvédelmi irányelvek', 'Kapcsolatfelvétel'],
+            links: [
+                { text: 'Felhasználási feltételek', path: '/terms' },
+                { text: 'Adatvédelmi irányelvek', path: '/privacy' },
+                { text: 'Kapcsolatfelvétel', path: `mailto:${COMPANY.email}` }
+            ],
             copyright: `© 2025 ${COMPANY.name}. Minden jog fenntartva.`,
         },
+        legal: {
+            termsTitle: 'Felhasználási feltételek',
+            termsContent: `1. § (Cél)
+Jelen feltételek a GR Bridge Solution Kft. (a továbbiakban: "Társaság") által nyújtott Vridge szolgáltatás igénybevételének feltételeit rögzítik.
+
+2. § (Szolgáltatások)
+A Társaság tanácsadási és ügyintézési szolgáltatásokat nyújt a magyarországi vízumokkal és tartózkodási engedélyekkel kapcsolatban.
+
+3. § (Jogszabályi megfelelőség)
+A szolgáltatásra a magyar jogszabályok, különösen az elektronikus kereskedelmi szolgáltatásokról szóló 2001. évi CVIII. törvény irányadóak.
+
+4. § (Felelősség korlátozása)
+A végső döntés a vízum jóváhagyásáról a magyar hatóságok (Országos Idegenrendészeti Főigazgatóság) hatásköre.`,
+            privacyTitle: 'Adatvédelmi irányelvek',
+            privacyContent: `Ez az irányelv megfelel a magyar és az EU általános adatvédelmi rendeletének (GDPR).
+
+1. Adatgyűjtés célja
+Csak a konzultációhoz és ügyintézéshez feltétlenül szükséges kapcsolattartási adatokat gyűjtjük.
+
+2. Fontos adatkezelési tájékoztató
+A Vridge NEM tárol érzékeny személyazonosító adatokat (például útlevélmásolatokat vagy személyi igazolványszámokat) semmilyen külön adatbázisban. Minden hivatali dokumentumot az eljárás befejezése után azonnal megsemmisítünk vagy visszaszolgáltatunk az ügyfélnek.
+
+3. Felhasználói jogok
+A felhasználóknak joguk van bármikor tájékoztatást kérni, helyesbíteni vagy törölni adataikat.`,
+            back: 'Vissza a főoldalra'
+        }
     },
 };

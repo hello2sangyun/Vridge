@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { IconBriefcase, IconBuilding, IconPeople, IconRefresh, IconArrowRight, IconCheck } from './Icons';
+import { IconBriefcase, IconBuilding, IconPeople, IconRefresh, IconArrowRight, IconCheck, IconShieldCheck } from './Icons';
 
-const SERVICE_ICONS = [IconBriefcase, IconBuilding, IconPeople, IconRefresh];
-const SERVICE_COLORS = ['#007A33', '#2563eb', '#7c3aed', '#d97706'];
+const SERVICE_ICONS = [IconBriefcase, IconBuilding, IconPeople, IconShieldCheck];
+const SERVICE_COLORS = ['#007A33', '#2563eb', '#7c3aed', '#0891b2'];
 
 export default function Services({ t }) {
     const [hovered, setHovered] = useState(null);
@@ -22,7 +22,7 @@ export default function Services({ t }) {
 
                 <div style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
                     gap: '20px',
                 }}>
                     {services.items.map(({ title, desc, details }, i) => {
@@ -38,7 +38,7 @@ export default function Services({ t }) {
                                 style={{
                                     background: isHovered ? '#007A33' : '#fff',
                                     border: `1.5px solid ${isHovered ? '#007A33' : '#e5e7eb'}`,
-                                    borderRadius: '20px', padding: '32px 28px',
+                                    borderRadius: '20px', padding: '32px 20px',
                                     transition: 'all 0.25s ease', cursor: 'pointer', position: 'relative',
                                     boxShadow: isHovered ? '0 20px 48px rgba(0,122,51,0.3)' : '0 2px 8px rgba(0,0,0,0.04)',
                                 }}

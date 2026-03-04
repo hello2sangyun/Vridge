@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { IconEnvelope, IconMapPin } from './Icons';
 import VridgeLogo from './VridgeLogo';
 
@@ -95,7 +96,7 @@ export default function Footer({ t }) {
                             </a>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.875rem', color: 'rgba(255,255,255,0.62)' }}>
                                 <IconMapPin size={15} color="rgba(255,255,255,0.45)" />
-                                Budapest, Hungary
+                                {footer.location}
                             </div>
                         </div>
 
@@ -131,14 +132,26 @@ export default function Footer({ t }) {
                         </p>
                     </div>
                     <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
-                        {footer.links.map(item => (
-                            <a key={item} href="#" style={{
-                                fontSize: '0.8125rem', color: 'rgba(255,255,255,0.3)', transition: 'color 0.18s', textDecoration: 'none',
-                            }}
-                                onMouseEnter={e => e.target.style.color = '#fff'}
-                                onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.3)'}
-                            >{item}</a>
-                        ))}
+                        {footer.links.map(item => {
+                            if (item.path.startsWith('mailto:')) {
+                                return (
+                                    <a key={item.text} href={item.path} style={{
+                                        fontSize: '0.8125rem', color: 'rgba(255,255,255,0.3)', transition: 'color 0.18s', textDecoration: 'none',
+                                    }}
+                                        onMouseEnter={e => e.target.style.color = '#fff'}
+                                        onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.3)'}
+                                    >{item.text}</a>
+                                );
+                            }
+                            return (
+                                <Link key={item.text} to={item.path} style={{
+                                    fontSize: '0.8125rem', color: 'rgba(255,255,255,0.3)', transition: 'color 0.18s', textDecoration: 'none',
+                                }}
+                                    onMouseEnter={e => e.target.style.color = '#fff'}
+                                    onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.3)'}
+                                >{item.text}</Link>
+                            );
+                        })}
                     </div>
                 </div>
 

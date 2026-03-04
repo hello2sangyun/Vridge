@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { IconCalendar, IconCheck, IconClock, IconGlobe, IconBellAlert, IconEnvelope } from './Icons';
 
 // ✏️  여기에 본인의 Calendly URL을 입력하세요
-const CALENDLY_URL = 'https://calendly.com/visa-vridge';
+const CALENDLY_URL = 'https://calendly.com/visa-vridge/hungary-visa-review';
 
 const BENEFIT_ICONS = [IconCheck, IconClock, IconGlobe, IconBellAlert];
 
@@ -13,7 +13,7 @@ function CalendlyWidget({ url, lang }) {
     // Calendly locale map: KO→ko, EN→en, HU→hu
     const localeMap = { KO: 'ko', EN: 'en', HU: 'hu' };
     const locale = localeMap[lang] || 'en';
-    const fullUrl = `${url}?hide_gdpr_banner=1&primary_color=007A33&locale=${locale}`;
+    const fullUrl = `${url}?hide_gdpr_banner=1&hide_landing_page_details=1&primary_color=007A33&locale=${locale}`;
 
     useEffect(() => {
         // Load Calendly CSS once

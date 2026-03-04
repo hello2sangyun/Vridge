@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { IconArrowRight } from './Icons';
 import VridgeLogo from './VridgeLogo';
 
@@ -9,6 +10,8 @@ const LANGS = [
 ];
 
 export default function Nav({ lang, setLang, t }) {
+    const location = useLocation();
+    const isHome = location.pathname === '/';
     const [scrolled, setScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
 
@@ -21,13 +24,15 @@ export default function Nav({ lang, setLang, t }) {
     // Close menu on link click
     const closeMenu = () => setMenuOpen(false);
 
+    const getLinkHref = (hash) => isHome ? hash : `/${hash}`;
+
     const navLinks = [
-        { label: t.nav.services, href: '#services' },
-        { label: t.nav.why, href: '#why' },
-        { label: t.nav.consultation, href: '#consultation' },
+        { label: t.nav.services, href: getLinkHref('#services') },
+        { label: t.nav.why, href: getLinkHref('#why') },
+        { label: t.nav.consultation, href: getLinkHref('#consultation') },
     ];
 
-    const linkColor = scrolled ? '#374151' : 'rgba(255,255,255,0.9)';
+    const linkColor = scrolled || !isHome ? '#374151' : 'rgba(255,255,255,0.9)';
 
     return (
         <>
@@ -45,25 +50,25 @@ export default function Nav({ lang, setLang, t }) {
 
             <nav style={{
                 position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000,
-                background: scrolled || menuOpen ? 'rgba(255,255,255,0.97)' : 'transparent',
-                backdropFilter: scrolled || menuOpen ? 'blur(14px)' : 'none',
-                borderBottom: scrolled || menuOpen ? '1px solid #e5e7eb' : '1px solid transparent',
+                background: scrolled || menuOpen || !isHome ? 'rgba(255,255,255,0.97)' : 'transparent',
+                backdropFilter: scrolled || menuOpen || !isHome ? 'blur(14px)' : 'none',
+                borderBottom: scrolled || menuOpen || !isHome ? '1px solid #e5e7eb' : '1px solid transparent',
                 transition: 'all 0.3s ease',
             }}>
                 <div style={{
-                    maxWidth: '1160px', margin: '0 auto', padding: '0 20px',
+                    maxWidth: '1320px', margin: '0 auto', padding: '0 20px',
                     display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                     height: '68px',
                 }}>
                     {/* Logo */}
-                    <a href="#" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+                    <Link to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
                         <VridgeLogo
                             height={42}
-                            color={scrolled || menuOpen ? '#007A33' : '#ffffff'}
-                            textColor={scrolled || menuOpen ? '#111827' : '#ffffff'}
+                            color={scrolled || menuOpen || !isHome ? '#007A33' : '#ffffff'}
+                            textColor={scrolled || menuOpen || !isHome ? '#111827' : '#ffffff'}
                             showText={true}
                         />
-                    </a>
+                    </Link>
                     {/* ===== DESKTOP NAV ===== */}
                     <div className="nav-desktop" style={{ alignItems: 'center', gap: '24px' }}>
                         <div style={{ display: 'flex', gap: '22px', alignItems: 'center' }}>
