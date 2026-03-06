@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-import { IconCalendar, IconCheck, IconClock, IconGlobe, IconBellAlert, IconEnvelope } from './Icons';
+import React, { useEffect, useRef, useState } from 'react';
+import { IconCalendar, IconCheck, IconClock, IconGlobe, IconBellAlert, IconEnvelope, IconChevronRight } from './Icons';
 
 // ✏️  여기에 본인의 Calendly URL을 입력하세요
 const CALENDLY_URL = 'https://calendly.com/visa-vridge/30min';
@@ -74,6 +74,28 @@ function CalendlyWidget({ url, lang }) {
 
 export default function Consultation({ t, lang }) {
     const { consult } = t;
+    const [showModal, setShowModal] = useState(false);
+    const [step, setStep] = useState(1);
+    const [userInput, setUserInput] = useState('');
+
+    const openModal = () => {
+        setShowModal(true);
+        setStep(1);
+    };
+
+    const closeModal = () => {
+        setShowModal(false);
+        setStep(1);
+        setUserInput('');
+    };
+
+    const handleNext = () => {
+        if (userInput.trim()) {
+            setStep(2);
+        } else {
+            alert(consult.modalStep1Placeholder);
+        }
+    };
 
     return (
         <section id="consultation" style={{ background: '#fff', padding: '96px 0' }}>
@@ -114,14 +136,19 @@ export default function Consultation({ t, lang }) {
                     })}
                 </div>
 
-                {/* Calendly Widget */}
-                <div style={{
-                    borderRadius: '24px',
-                    overflow: 'hidden',
-                    border: '1px solid #e5e7eb',
-                    boxShadow: '0 4px 24px rgba(0,0,0,0.07)',
-                }}>
-                    <CalendlyWidget url={CALENDLY_URL} lang={lang} />
+                {/* CTA Button instead of inline widget */}
+                <div style={{ textAlign: 'center', padding: '40px 0' }}>
+                    <button
+                        className="btn-primary"
+                        style={{ padding: '20px 48px', fontSize: '1.125rem' }}
+                        onClick={openModal}
+                    >
+                        {consult.cta}
+                        <IconChevronRight size={20} color="#fff" stroke={3} />
+                    </button>
+                    <p style={{ marginTop: '20px', color: '#6b7280', fontSize: '0.9375rem' }}>
+                        {lang === 'KO' ? '* 상담 요청 전 간단한 확인 절차가 있습니다.' : '* Quick info check before scheduling.'}
+                    </p>
                 </div>
 
                 {/* Email CTA strip */}
@@ -153,6 +180,59 @@ export default function Consultation({ t, lang }) {
                     </a>
                 </div>
             </div>
+
+            {/* Modal Logic */}
+            {showModal && (
+                <div className="modal-overlay" onClick={closeModal}>
+                    <div
+                        className={`modal-container ${step === 2 ? 'large' : ''}`}
+                        onClick={e => e.stopPropagation()}
+                    >
+                        <div className="modal-header">
+                            <h3 className="modal-title">
+                                {step === 1 ? consult.modalStep1Title : consult.modalStep2Title}
+                            </h3>
+                            <button className="modal-close" onClick={closeModal}>✕</button>
+                        </div>
+
+                        <div className="modal-body">
+                            {step === 1 ? (
+                                <div style={{ textAlign: 'center' }}>
+                                    <textarea
+                                        className="modal-input"
+                                        rows="4"
+                                        placeholder={consult.modalStep1Placeholder}
+                                        value={userInput}
+                                        onChange={e => setUserInput(e.target.value)}
+                                        autoFocus
+                                    />
+                                    <button
+                                        className="btn-primary"
+                                        style={{ width: '100%', justifyContent: 'center' }}
+                                        onClick={handleNext}
+                                    >
+                                        {lang === 'KO' ? '다음 단계로' : 'Next Step'}
+                                        <IconChevronRight size={18} color="#fff" stroke={2} />
+                                    </button>
+                                </div>
+                            ) : (
+                                <div>
+                                    <p style={{ marginBottom: '24px', color: '#4b5563', fontSize: '0.9375rem', textAlign: 'center' }}>
+                                        {consult.modalStep2Sub}
+                                    </p>
+                                    <div style={{
+                                        borderRadius: '16px',
+                                        overflow: 'hidden',
+                                        border: '1px solid #e5e7eb',
+                                    }}>
+                                        <CalendlyWidget url={CALENDLY_URL} lang={lang} />
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            )}
         </section>
     );
 }

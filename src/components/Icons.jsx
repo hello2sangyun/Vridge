@@ -195,3 +195,12 @@ export function IconBellAlert({ size = 16, color = 'currentColor', stroke = 1.8 
         </svg>
     );
 }
+
+export function IconChevronRight({ size = 20, color = 'currentColor', stroke = 1.8 }) {
+    return (
+        <svg width={size} height={size} viewBox="0 0 24 24" stroke={color} strokeWidth={stroke} {...base}>
+            <polyline points="9 18 15 12 9 6" />
+        </svg>
+    );
+}
+
