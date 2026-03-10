@@ -6,7 +6,7 @@ const CALENDLY_URL = 'https://calendly.com/visa-vridge/30min';
 
 const BENEFIT_ICONS = [IconCheck, IconClock, IconGlobe, IconBellAlert];
 
-function CalendlyWidget({ url, lang }) {
+function CalendlyWidget({ url, lang, userInput }) {
     const containerRef = useRef(null);
     const scriptRef = useRef(null);
 
@@ -50,7 +50,11 @@ function CalendlyWidget({ url, lang }) {
                 window.Calendly.initInlineWidget({
                     url: fullUrl,
                     parentElement: containerRef.current,
-                    prefill: {},
+                    prefill: {
+                        customAnswers: {
+                            a1: userInput
+                        }
+                    },
                     utm: {},
                 });
             }
@@ -62,7 +66,7 @@ function CalendlyWidget({ url, lang }) {
                 containerRef.current.innerHTML = '';
             }
         };
-    }, [lang, fullUrl]);
+    }, [lang, fullUrl, userInput]);
 
     return (
         <div
@@ -225,7 +229,7 @@ export default function Consultation({ t, lang }) {
                                         overflow: 'hidden',
                                         border: '1px solid #e5e7eb',
                                     }}>
-                                        <CalendlyWidget url={CALENDLY_URL} lang={lang} />
+                                        <CalendlyWidget url={CALENDLY_URL} lang={lang} userInput={userInput} />
                                     </div>
                                 </div>
                             )}
