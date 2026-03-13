@@ -9,17 +9,20 @@ import WhyVridge from './components/WhyVridge'
 import Consultation from './components/Consultation'
 import Footer from './components/Footer'
 
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import TermsOfUse from './components/TermsOfUse'
 import PrivacyPolicy from './components/PrivacyPolicy'
+import AdminDashboard from './pages/AdminDashboard'
 
 function App() {
   const [lang, setLang] = useState('EN');
   const t = i18n[lang];
+  const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith('/admin');
 
   return (
     <>
-      <Nav lang={lang} setLang={setLang} t={t} />
+      {!isAdminRoute && <Nav lang={lang} setLang={setLang} t={t} />}
       <Routes>
         <Route path="/" element={
           <main>
@@ -32,8 +35,9 @@ function App() {
         } />
         <Route path="/terms" element={<TermsOfUse t={t} />} />
         <Route path="/privacy" element={<PrivacyPolicy t={t} />} />
+        <Route path="/admin" element={<AdminDashboard />} />
       </Routes>
-      <Footer t={t} />
+      {!isAdminRoute && <Footer t={t} />}
     </>
   )
 }

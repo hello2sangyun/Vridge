@@ -1,86 +1,17 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { IconCalendar, IconCheck, IconClock, IconGlobe, IconBellAlert, IconEnvelope, IconChevronRight } from './Icons';
-
-// ✏️  여기에 본인의 Calendly URL을 입력하세요
-const CALENDLY_URL = 'https://calendly.com/visa-vridge/60min';
+import { saveConsultationRequest } from '../services/firebaseSetup';
 
 const BENEFIT_ICONS = [IconCheck, IconClock, IconGlobe, IconBellAlert];
-
-function CalendlyWidget({ url, lang, userInput }) {
-    const containerRef = useRef(null);
-    const scriptRef = useRef(null);
-
-    // Calendly locale map: KO→ko, EN→en, HU→hu
-    const localeMap = { KO: 'ko', EN: 'en', HU: 'hu' };
-    const locale = localeMap[lang] || 'en';
-    const fullUrl = `${url}?hide_gdpr_banner=1&hide_landing_page_details=1&primary_color=007A33&locale=${locale}`;
-
-    useEffect(() => {
-        // Load Calendly CSS once
-        if (!document.getElementById('calendly-css')) {
-            const link = document.createElement('link');
-            link.id = 'calendly-css';
-            link.rel = 'stylesheet';
-            link.href = 'https://assets.calendly.com/assets/external/widget.css';
-            document.head.appendChild(link);
-        }
-
-        // Load Calendly JS once
-        const loadScript = () => {
-            return new Promise((resolve) => {
-                if (window.Calendly) { resolve(); return; }
-                if (document.getElementById('calendly-js')) {
-                    document.getElementById('calendly-js').addEventListener('load', resolve);
-                    return;
-                }
-                const script = document.createElement('script');
-                script.id = 'calendly-js';
-                script.src = 'https://assets.calendly.com/assets/external/widget.js';
-                script.async = true;
-                script.onload = resolve;
-                document.body.appendChild(script);
-                scriptRef.current = script;
-            });
-        };
-
-        loadScript().then(() => {
-            if (containerRef.current && window.Calendly) {
-                // Clear previous widget
-                containerRef.current.innerHTML = '';
-                window.Calendly.initInlineWidget({
-                    url: fullUrl,
-                    parentElement: containerRef.current,
-                    prefill: {
-                        customAnswers: {
-                            a1: userInput
-                        }
-                    },
-                    utm: {},
-                });
-            }
-        });
-
-        return () => {
-            // Cleanup widget content on unmount
-            if (containerRef.current) {
-                containerRef.current.innerHTML = '';
-            }
-        };
-    }, [lang, fullUrl, userInput]);
-
-    return (
-        <div
-            ref={containerRef}
-            style={{ minWidth: '320px', height: '700px', borderRadius: '20px', overflow: 'hidden' }}
-        />
-    );
-}
 
 export default function Consultation({ t, lang }) {
     const { consult } = t;
     const [showModal, setShowModal] = useState(false);
     const [step, setStep] = useState(1);
     const [userInput, setUserInput] = useState('');
+    const [userEmail, setUserEmail] = useState('');
+    const [userName, setUserName] = useState('');
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const openModal = () => {
         setShowModal(true);
@@ -88,16 +19,45 @@ export default function Consultation({ t, lang }) {
     };
 
     const closeModal = () => {
+        if (isSubmitting) return;
         setShowModal(false);
         setStep(1);
         setUserInput('');
+        setUserEmail('');
+        setUserName('');
     };
 
     const handleNext = () => {
-        if (userInput.trim()) {
-            setStep(2);
+        if (userInput.trim().length < 10) {
+            alert(lang === 'KO' ? '도움이 필요하신 내용을 조금 더 구체적으로 적어주세요.' : 'Please provide a bit more detail about your request.');
         } else {
-            alert(consult.modalStep1Placeholder);
+            setStep(2);
+        }
+    };
+
+    const handleSubmit = async () => {
+        if (!userName.trim()) {
+            alert(lang === 'KO' ? '성함을 입력해 주세요.' : 'Please enter your name.');
+            return;
+        }
+        if (!userEmail.includes('@') || userEmail.length < 5) {
+            alert(lang === 'KO' ? '올바른 이메일 주소를 입력해 주세요.' : 'Please enter a valid email address.');
+            return;
+        }
+
+        setIsSubmitting(true);
+        try {
+            await saveConsultationRequest({
+                name: userName,
+                email: userEmail,
+                message: userInput,
+                lang: lang
+            });
+            setStep(3); // Thank You Step
+        } catch (error) {
+            alert(lang === 'KO' ? '오류가 발생했습니다. 나중에 다시 시도해 주세요.' : 'An error occurred. Please try again later.');
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
@@ -150,9 +110,6 @@ export default function Consultation({ t, lang }) {
                         {consult.cta}
                         <IconChevronRight size={20} color="#fff" stroke={3} />
                     </button>
-                    <p style={{ marginTop: '20px', color: '#6b7280', fontSize: '0.9375rem' }}>
-                        {lang === 'KO' ? '* 상담 요청 전 간단한 확인 절차가 있습니다.' : '* Quick info check before scheduling.'}
-                    </p>
                 </div>
 
                 {/* Email CTA strip */}
@@ -189,14 +146,16 @@ export default function Consultation({ t, lang }) {
             {showModal && (
                 <div className="modal-overlay" onClick={closeModal}>
                     <div
-                        className={`modal-container ${step === 2 ? 'large' : ''}`}
+                        className={`modal-container ${step === 3 ? 'success-modal' : ''}`}
                         onClick={e => e.stopPropagation()}
                     >
                         <div className="modal-header">
                             <h3 className="modal-title">
-                                {step === 1 ? consult.modalStep1Title : consult.modalStep2Title}
+                                {step === 1 ? consult.modalStep1Title 
+                                : step === 2 ? (lang === 'KO' ? '연락처 정보 입력' : 'Contact Information')
+                                : (lang === 'KO' ? '신청이 완료되었습니다!' : 'Application Submitted!')}
                             </h3>
-                            <button className="modal-close" onClick={closeModal}>✕</button>
+                            {step !== 3 && <button className="modal-close" onClick={closeModal}>✕</button>}
                         </div>
 
                         <div className="modal-body">
@@ -210,6 +169,22 @@ export default function Consultation({ t, lang }) {
                                         onChange={e => setUserInput(e.target.value)}
                                         autoFocus
                                     />
+                                    <div style={{ marginTop: '20px', marginBottom: '20px', textAlign: 'left', background: '#fef2f2', padding: '16px', borderRadius: '8px', border: '1px solid #fee2e2' }}>
+                                        <p style={{ color: '#dc2626', fontSize: '0.875rem', fontWeight: 600, marginBottom: '6px' }}>
+                                            {lang === 'KO' 
+                                                ? '* 노쇼(No-show) 방지 및 보다 정확한 상담 제공을 위해, 사전에 어떤 도움이 필요하신지 구체적으로 작성해 주시기 바랍니다.' 
+                                                : lang === 'HU'
+                                                ? '* A meg nem jelenések elkerülése és a minőségi szolgáltatás biztosítása érdekében kérjük, részletezze, hogyan segíthetünk, mielőtt időpontot foglalna.'
+                                                : '* To prevent no-shows and ensure quality service, please provide a detailed description of how we can help before scheduling.'}
+                                        </p>
+                                        <p style={{ color: '#b91c1c', fontSize: '0.8125rem' }}>
+                                            {lang === 'KO' 
+                                                ? '※ 정보가 부족할 경우 상담 지원이 거절될 수 있습니다.' 
+                                                : lang === 'HU'
+                                                ? '※ A hiányos részletekkel rendelkező kéréseket elutasíthatjuk.'
+                                                : '※ Requests with insufficient details may be declined.'}
+                                        </p>
+                                    </div>
                                     <button
                                         className="btn-primary"
                                         style={{ width: '100%', justifyContent: 'center' }}
@@ -219,18 +194,59 @@ export default function Consultation({ t, lang }) {
                                         <IconChevronRight size={18} color="#fff" stroke={2} />
                                     </button>
                                 </div>
-                            ) : (
-                                <div>
-                                    <p style={{ marginBottom: '24px', color: '#4b5563', fontSize: '0.9375rem', textAlign: 'center' }}>
-                                        {consult.modalStep2Sub}
+                            ) : step === 2 ? (
+                                <div style={{ textAlign: 'center' }}>
+                                    <p style={{ marginBottom: '24px', color: '#4b5563', fontSize: '0.9375rem' }}>
+                                        {lang === 'KO' 
+                                            ? '이름과 이메일 주소를 입력해 주세요.' 
+                                            : 'Please enter your name and email address.'}
                                     </p>
-                                    <div style={{
-                                        borderRadius: '16px',
-                                        overflow: 'hidden',
-                                        border: '1px solid #e5e7eb',
-                                    }}>
-                                        <CalendlyWidget url={CALENDLY_URL} lang={lang} userInput={userInput} />
+                                    <input
+                                        type="text"
+                                        className="modal-input"
+                                        style={{ marginBottom: '12px', height: '52px' }}
+                                        placeholder={lang === 'KO' ? "이름 (Name)" : "Name"}
+                                        value={userName}
+                                        onChange={e => setUserName(e.target.value)}
+                                        autoFocus
+                                    />
+                                    <input
+                                        type="email"
+                                        className="modal-input"
+                                        style={{ marginBottom: '20px', height: '52px' }}
+                                        placeholder="example@email.com"
+                                        value={userEmail}
+                                        onChange={e => setUserEmail(e.target.value)}
+                                    />
+                                    <button
+                                        className="btn-primary"
+                                        style={{ width: '100%', justifyContent: 'center' }}
+                                        onClick={handleSubmit}
+                                        disabled={isSubmitting}
+                                    >
+                                        {isSubmitting ? 'Submitting...' : (lang === 'KO' ? '서류 심사 제출하기' : 'Submit for Review')}
+                                    </button>
+                                </div>
+                            ) : (
+                                <div style={{ textAlign: 'center', padding: '20px 0' }}>
+                                    <div style={{ display: 'inline-flex', justifyContent: 'center', alignItems: 'center', width: '64px', height: '64px', borderRadius: '50%', background: '#d1fae5', color: '#059669', marginBottom: '20px' }}>
+                                        <IconCheck size={32} stroke={3} />
                                     </div>
+                                    <h4 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#111827', marginBottom: '12px' }}>
+                                        {lang === 'KO' ? '신청해주셔서 감사합니다 💛' : 'Thank you for applying 💛'}
+                                    </h4>
+                                    <p style={{ color: '#4b5563', fontSize: '0.95rem', lineHeight: 1.6, marginBottom: '32px' }}>
+                                        {lang === 'KO' 
+                                            ? '작성해주신 내용을 바탕으로 Vridge의 담당자가 신속히 배정됩니다.\n담당자가 내용을 확인하고 승인하면, 입력하신 이메일로 미팅 스케줄을 잡을 수 있는 링크를 보내드립니다.' 
+                                            : 'A Vridge representative will be assigned to review your request.\nOnce approved, we will send an email with a link to schedule your meeting.'}
+                                    </p>
+                                    <button
+                                        className="btn-primary"
+                                        style={{ width: '100%', justifyContent: 'center', background: '#f3f4f6', color: '#374151' }}
+                                        onClick={closeModal}
+                                    >
+                                        {lang === 'KO' ? '돌아가기' : 'Close'}
+                                    </button>
                                 </div>
                             )}
                         </div>
