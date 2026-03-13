@@ -5,6 +5,7 @@
 
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, serverTimestamp } from "firebase/firestore";
+import { sendTelegramNotification } from "./telegramService";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCi4UbS9r-1yLXu8r7FM7LHAGLMOKszTRM",
@@ -42,6 +43,10 @@ export const saveConsultationRequest = async (requestData) => {
       createdAt: serverTimestamp()
     });
     console.log("Successfully saved with ID: ", docRef.id);
+    
+    // 텔레그램 알림 전송 (에러가 나더라도 신청 자체는 완료되도록 비동기 처리)
+    sendTelegramNotification(requestData).catch(err => console.error(err));
+
     return docRef.id;
   } catch (e) {
     console.error("Error adding document to consultations collection: ", e.message, e);

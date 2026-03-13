@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { sendTelegramNotification } from '../services/telegramService';
 
 export default function ScreeningForm({ lang }) {
     const [formData, setFormData] = useState({
@@ -162,19 +163,7 @@ Passport Expiry: ${formData.passportExpiry}
             }
 
             // 2. Send via Telegram Bot
-            const TG_BOT_TOKEN = "YOUR_TELEGRAM_BOT_TOKEN_HERE"; // Replace with real token
-            const TG_CHAT_ID = "YOUR_TELEGRAM_CHAT_ID_HERE"; // Replace with your chat ID
-
-            if (TG_BOT_TOKEN !== "YOUR_TELEGRAM_BOT_TOKEN_HERE") {
-                await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                        chat_id: TG_CHAT_ID,
-                        text: leadMessage
-                    })
-                });
-            }
+            await sendTelegramNotification(formData, 'screening');
 
             // Simulate network request if keys are not set yet
             if (WEB3FORMS_ACCESS_KEY === "YOUR_WEB3FORMS_ACCESS_KEY_HERE") {
