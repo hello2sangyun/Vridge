@@ -114,7 +114,7 @@ export const i18n = {
             modalStep2Sub: '상담 받으실 스케쥴을 설정해 주세요.',
         },
         footer: {
-            tagline: '헝가리 비자의 가장 확실한 연결고리',
+            tagline: 'Vridge는 헝가리 거주증 및 비자 발급을 전문으로 하는 현지 컨설팅 기업입니다.',
             companyName: 'GR Bridge Solution Kft. 서비스',
             companyLegal: `${COMPANY.legal}`,
             services: '서비스',
@@ -131,7 +131,9 @@ export const i18n = {
         },
         legal: {
             termsTitle: '이용약관',
-            termsContent: `제1조 (목적)
+            termsContent: `Vridge는 헝가리 거주증 및 비자 발급을 전문으로 하는 현지 컨설팅 기업입니다.
+
+제1조 (목적)
 본 약관은 GR Bridge Solution Kft.(이하 "회사")가 제공하는 Vridge 서비스의 이용조건 및 절차에 관한 사항을 규정함을 목적으로 합니다.
 
 제2조 (서비스의 제공)
@@ -143,7 +145,9 @@ export const i18n = {
 제4조 (면책 사항)
 회사는 최선의 노력을 다하지만, 비자 승인 최종 결정권은 헝가리 당국(이민국 및 대사관)에 있으며 결과에 대한 법적 책임은 당국에 있습니다.`,
             privacyTitle: '개인정보처리방침',
-            privacyContent: `본 방침은 헝가리 및 EU의 개인정보 보호법(GDPR)을 준수합니다.
+            privacyContent: `Vridge는 헝가리 거주증 및 비자 발급을 전문으로 하는 현지 컨설팅 기업입니다.
+
+본 방침은 헝가리 및 EU의 개인정보 보호법(GDPR)을 준수합니다.
 
 1. 개인정보 수집 및 이용 목적
 상담 예약 및 비자 관련 행정 서비스 제공을 위해 최소한의 연락처 정보만을 수집합니다.
@@ -264,7 +268,7 @@ Vridge는 고객의 여권 사본, 주민등록번호 등 민감한 개인 식�
             modalStep2Sub: 'Please select a time for your expert consultation.',
         },
         footer: {
-            tagline: 'Your most reliable bridge to Hungary',
+            tagline: 'Vridge is a local consulting firm specializing in Hungarian residency and visa issuance.',
             companyName: `A service by ${COMPANY.legal}`,
             companyLegal: `${COMPANY.legal}`,
             services: 'Services',
@@ -281,7 +285,9 @@ Vridge는 고객의 여권 사본, 주민등록번호 등 민감한 개인 식�
         },
         legal: {
             termsTitle: 'Terms of Use',
-            termsContent: `Article 1 (Purpose)
+            termsContent: `Vridge is a local consulting firm specializing in Hungarian residency and visa issuance.
+
+Article 1 (Purpose)
 These terms sets out the conditions and procedures for using the Vridge service provided by GR Bridge Solution Kft. (the "Company").
 
 Article 2 (Services)
@@ -293,7 +299,9 @@ Usage of this service is governed by Hungarian laws, including Act CVIII of 2001
 Article 4 (Disclaimer)
 While we strive for success, the final decision on visa approval rests with the Hungarian authorities (National Directorate-General for Aliens Policing and Embassies).`,
             privacyTitle: 'Privacy Policy',
-            privacyContent: `This policy complies with the Hungarian and EU General Data Protection Regulation (GDPR).
+            privacyContent: `Vridge is a local consulting firm specializing in Hungarian residency and visa issuance.
+
+This policy complies with the Hungarian and EU General Data Protection Regulation (GDPR).
 
 1. Purpose of Collection
 We collect only essential contact information for consultation and visa-related services.
@@ -414,7 +422,7 @@ Users have the right to access, correct, or delete their personal info at any ti
             modalStep2Sub: 'Kérjük, válasszon időpontot a szakértői konzultációhoz.',
         },
         footer: {
-            tagline: 'A legmegbízhatóbb híd Magyarországra',
+            tagline: 'A Vridge egy helyi tanácsadó cég, amely magyarországi tartózkodási engedélyekre és vízumokra specializálódott.',
             companyName: `${COMPANY.legal} szolgáltatása`,
             companyLegal: `${COMPANY.legal}`,
             services: 'Szolgáltatások',
@@ -431,7 +439,9 @@ Users have the right to access, correct, or delete their personal info at any ti
         },
         legal: {
             termsTitle: 'Felhasználási feltételek',
-            termsContent: `1. § (Cél)
+            termsContent: `A Vridge egy magyarországi tartózkodási engedélyekre és vízumokra specializálódott helyi tanácsadó cég.
+
+1. § (Cél)
 Jelen feltételek a GR Bridge Solution Kft. (a továbbiakban: "Társaság") által nyújtott Vridge szolgáltatás igénybevételének feltételeit rögzítik.
 
 2. § (Szolgáltatások)
@@ -443,7 +453,9 @@ A szolgáltatásra a magyar jogszabályok, különösen az elektronikus keresked
 4. § (Felelősség korlátozása)
 A végső döntés a vízum jóváhagyásáról a magyar hatóságok (Országos Idegenrendészeti Főigazgatóság) hatásköre.`,
             privacyTitle: 'Adatvédelmi irányelvek',
-            privacyContent: `Ez az irányelv megfelel a magyar és az EU általános adatvédelmi rendeletének (GDPR).
+            privacyContent: `A Vridge egy magyarországi tartózkodási engedélyekre és vízumokra specializálódott helyi tanácsadó cég.
+
+Ez az irányelv megfelel a magyar és az EU általános adatvédelmi rendeletének (GDPR).
 
 1. Adatgyűjtés célja
 Csak a konzultációhoz és ügyintézéshez feltétlenül szükséges kapcsolattartási adatokat gyűjtjük.

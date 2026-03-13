@@ -62,6 +62,7 @@ export default function Nav({ lang, setLang, t }) {
                 }}>
                     {/* Logo */}
                     <Link to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+                        <span className="sr-only">Vridge - 헝가리 거주증 및 비자 발급 전문 컨설팅 기업</span>
                         <VridgeLogo
                             height={42}
                             color={scrolled || menuOpen || !isHome ? '#007A33' : '#ffffff'}

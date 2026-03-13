@@ -10,6 +10,7 @@ import Consultation from './components/Consultation'
 import Footer from './components/Footer'
 
 import { Routes, Route, useLocation } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import TermsOfUse from './components/TermsOfUse'
 import PrivacyPolicy from './components/PrivacyPolicy'
 import AdminDashboard from './pages/AdminDashboard'
@@ -26,6 +27,10 @@ function App() {
       <Routes>
         <Route path="/" element={
           <main>
+            <Helmet>
+              <title>Vridge | 헝가리 비자 전문 에이전시</title>
+              <meta name="description" content="헝가리 비자의 가장 확실한 연결고리, Vridge. 취업, 사업, 가족초청, 영주권까지 헝가리 현지 전문 에이전시가 책임집니다." />
+            </Helmet>
             <Hero t={t} />
             <Problems t={t} />
             <Services t={t} />

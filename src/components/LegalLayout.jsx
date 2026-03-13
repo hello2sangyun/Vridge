@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { IconArrowRight } from './Icons';
 
 export default function LegalLayout({ title, children, t }) {
@@ -9,6 +10,10 @@ export default function LegalLayout({ title, children, t }) {
 
     return (
         <div style={{ background: '#f9fafb', minHeight: '100vh', padding: '120px 0 80px' }}>
+            <Helmet>
+                <title>{title} | Vridge</title>
+                <meta name="description" content={`Vridge - ${title}`} />
+            </Helmet>
             <div className="container" style={{ maxWidth: '800px' }}>
                 <Link to="/" style={{
                     display: 'inline-flex', alignItems: 'center', gap: '8px',
