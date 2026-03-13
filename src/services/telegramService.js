@@ -5,8 +5,8 @@
 // 현재 MVP 단계에서는 빠르게 연동하기 위해 이 파일을 사용합니다.
 
 // .env 파일에 아래 변수들을 설정하거나, 아래 따옴표 안에 직접 입력하셔도 작동합니다.
-const TELEGRAM_BOT_TOKEN = import.meta.env.VITE_TELEGRAM_BOT_TOKEN || "7991490561:AAHRN26W5OAlGe4wq21C1_RMXYvzLtdEviU";
-const TELEGRAM_CHAT_ID = import.meta.env.VITE_TELEGRAM_CHAT_ID || "-4951773185";
+const TELEGRAM_BOT_TOKEN = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
+const TELEGRAM_CHAT_ID = import.meta.env.VITE_TELEGRAM_CHAT_ID;
 
 const escapeHtml = (unsafe) => {
   if (unsafe === null || unsafe === undefined) return "";

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { fetchRequests, updateRequestStatus } from '../services/firebaseSetup';
 import { sendApprovalEmail } from '../services/emailService';
+import PromoEmailModal from '../components/PromoEmailModal';
 
 // 예약용 고정 캘렌들리 링크
 const CALENDLY_LINK = 'https://calendly.com/visa-vridge/60min';
@@ -14,6 +15,7 @@ export default function AdminDashboard() {
   const [requests, setRequests] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedRequest, setSelectedRequest] = useState(null); // For the message viewing modal
+  const [showPromoModal, setShowPromoModal] = useState(false); // For Promo mass emails
 
   // 임시 하드코딩된 인증 정보
   const ADMIN_EMAIL = 'visa@vridge.info';
@@ -149,6 +151,7 @@ export default function AdminDashboard() {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px' }}>
           <h1 style={{ fontSize: '24px', fontWeight: 'bold', color: '#111827' }}>비자 상담 신청 관리 대시보드</h1>
           <div style={{ display: 'flex', gap: '12px' }}>
+            <button onClick={() => setShowPromoModal(true)} style={{ padding: '8px 16px', background: '#3b82f6', color: '#fff', border: 'none', borderRadius: '6px', cursor: 'pointer', fontWeight: 500 }}>전체 홍보(Promo)메일 발송</button>
             <button onClick={loadRequests} style={{ padding: '8px 16px', background: '#e5e7eb', border: 'none', borderRadius: '6px', cursor: 'pointer', color: '#374151', fontWeight: 500 }}>새로고침</button>
             <button onClick={handleLogout} style={{ padding: '8px 16px', background: '#fee2e2', color: '#dc2626', border: 'none', borderRadius: '6px', cursor: 'pointer', fontWeight: 500 }}>로그아웃</button>
           </div>
@@ -238,6 +241,14 @@ export default function AdminDashboard() {
               </div>
             </div>
           </div>
+        )}
+
+        {/* Promo Email Viewer Modal */}
+        {showPromoModal && (
+          <PromoEmailModal 
+            requests={requests} 
+            onClose={() => setShowPromoModal(false)} 
+          />
         )}
 
       </div>

@@ -34,3 +34,26 @@ export const sendApprovalEmail = async (userEmail, userName, calendlyLink) => {
     return false;
   }
 };
+
+// Admin 페이지에서 단체 홍보(Promo) 메일 발송
+export const sendPromoEmail = async (toEmail, subject, htmlContent) => {
+  try {
+    const templateParams = {
+      to_email: toEmail,
+      subject: subject,
+      message: htmlContent // EmailJS 템플릿에 본문 변수가 {{{message}}}로 되어있어야 HTML이 렌더링 됩니다.
+    };
+
+    const response = await emailjs.send(
+      emailConfig.serviceId,
+      "YOUR_PROMO_TEMPLATE_ID_HERE", // ⚠️ EmailJS에서 새로운 템플릿 생성 후 여기에 ID를 입력하세요.
+      templateParams,
+      emailConfig.publicKey
+    );
+
+    return true;
+  } catch (error) {
+    console.error('PROMO Email send fail:', error);
+    return false;
+  }
+};
