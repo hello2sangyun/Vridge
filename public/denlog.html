@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Denlog – AI-Powered Task Manager</title>
+  <meta name="description" content="Denlog is an AI-powered task manager that automatically extracts to-dos from your emails, messages, and meetings. Developed by GR Bridge Solution Kft." />
+  <meta property="og:title" content="Denlog – AI-Powered Task Manager" />
+  <meta property="og:description" content="Denlog automatically discovers tasks from Gmail, Slack, Notion, and more — so you never miss what matters." />
+  <meta property="og:url" content="https://www.grbridgesolution.site/denlog.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0e17;
+      --bg2: #131b2c;
+      --surface: rgba(255,255,255,0.04);
+      --border: rgba(255,255,255,0.09);
+      --text: #f0f4f8;
+      --muted: #94a3b8;
+      --accent: #6366f1;
+      --accent2: #818cf8;
+      --cyan: #06b6d4;
+      --green: #22c55e;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(10,14,23,0.85);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.4rem; font-weight: 800;
+      background: linear-gradient(135deg, var(--accent2), var(--cyan));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a {
+      color: var(--muted); font-size: 0.9rem; font-weight: 500;
+      text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--accent); color: #fff !important;
+      padding: 0.5rem 1.25rem; border-radius: 8px; font-weight: 600 !important;
+      transition: background 0.2s, transform 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--accent2) !important; transform: translateY(-1px); }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 8rem 1.5rem 5rem;
+      background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(99,102,241,0.18) 0%, transparent 70%);
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(99,102,241,0.12); border: 1px solid rgba(99,102,241,0.3);
+      border-radius: 999px; padding: 0.35rem 1rem;
+      font-size: 0.8rem; font-weight: 600; color: var(--accent2);
+      margin-bottom: 2rem; letter-spacing: 0.04em; text-transform: uppercase;
+    }
+    .hero h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      font-weight: 800; line-height: 1.08; margin-bottom: 1.5rem;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--accent2) 0%, var(--cyan) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero p {
+      font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--muted);
+      max-width: 600px; margin: 0 auto 2.5rem; line-height: 1.75;
+    }
+    .hero-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff; padding: 0.85rem 2rem; border-radius: 12px;
+      font-weight: 700; font-size: 1rem; text-decoration: none;
+      box-shadow: 0 4px 24px rgba(99,102,241,0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(99,102,241,0.45); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      border: 1px solid var(--border); color: var(--text);
+      padding: 0.85rem 2rem; border-radius: 12px;
+      font-weight: 600; font-size: 1rem; text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.2); }
+
+    /* ── Section base ── */
+    section { padding: 6rem 1.5rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--accent2); margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700; margin-bottom: 1rem; line-height: 1.2;
+    }
+    .section-desc { color: var(--muted); font-size: 1.05rem; max-width: 560px; line-height: 1.75; }
+
+    /* ── Features grid ── */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem; margin-top: 3.5rem;
+    }
+    .feature-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 18px; padding: 2rem;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+    .feature-card:hover {
+      border-color: rgba(99,102,241,0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(99,102,241,0.08);
+    }
+    .feature-icon {
+      width: 48px; height: 48px; border-radius: 14px;
+      background: rgba(99,102,241,0.12); border: 1px solid rgba(99,102,241,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 1.25rem;
+    }
+    .feature-card h3 { font-family: 'Outfit', sans-serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 0.6rem; }
+    .feature-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
+
+    /* ── Integrations ── */
+    .integrations-section { background: rgba(19,27,44,0.5); }
+    .integrations-row {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      margin-top: 2.5rem; justify-content: center;
+    }
+    .integration-chip {
+      display: flex; align-items: center; gap: 0.6rem;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 999px; padding: 0.6rem 1.2rem;
+      font-size: 0.9rem; font-weight: 600;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .integration-chip:hover { border-color: rgba(99,102,241,0.4); background: rgba(99,102,241,0.06); }
+    .chip-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
+
+    /* ── How it works ── */
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; margin-top: 3.5rem; }
+    .step { text-align: center; padding: 2rem 1rem; }
+    .step-num {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff; font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 800;
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;
+      box-shadow: 0 4px 20px rgba(99,102,241,0.35);
+    }
+    .step h3 { font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .step p { color: var(--muted); font-size: 0.875rem; line-height: 1.7; }
+
+    /* ── CTA Banner ── */
+    .cta-section {
+      background: linear-gradient(135deg, rgba(99,102,241,0.12) 0%, rgba(6,182,212,0.08) 100%);
+      border: 1px solid rgba(99,102,241,0.2); border-radius: 24px;
+      padding: 4rem 2rem; text-align: center; margin: 0 auto;
+      max-width: 800px;
+    }
+    .store-badges { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
+    .store-badge {
+      display: flex; align-items: center; gap: 0.75rem;
+      background: rgba(255,255,255,0.06); border: 1px solid var(--border);
+      border-radius: 14px; padding: 0.75rem 1.5rem;
+      text-decoration: none; color: var(--text);
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    }
+    .store-badge:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); transform: translateY(-2px); }
+    .store-badge-icon { font-size: 1.6rem; }
+    .store-badge-text { text-align: left; }
+    .store-badge-text small { display: block; font-size: 0.7rem; color: var(--muted); }
+    .store-badge-text strong { font-size: 1rem; font-family: 'Outfit', sans-serif; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 3rem 1.5rem 2rem;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 800;
+      background: linear-gradient(135deg, var(--accent2), var(--cyan));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+    footer p { color: var(--muted); font-size: 0.85rem; margin-bottom: 1.5rem; }
+    .footer-links { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+    .footer-links a { color: var(--muted); font-size: 0.85rem; text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text); }
+    .footer-copy { color: var(--muted); font-size: 0.8rem; margin-top: 2rem; }
+
+    @media (max-width: 640px) {
+      nav { padding: 1rem; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="nav-logo">Denlog</div>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#integrations">Integrations</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="https://www.grbridgesolution.site" target="_blank" rel="noopener">GR Bridge Solution</a>
+      <a href="#download" class="nav-cta">Get the App</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">✦ By GR Bridge Solution Kft.</div>
+      <h1>
+        Never miss a task.<br>
+        <span>Denlog</span> has you covered.
+      </h1>
+      <p>
+        Denlog is an AI-powered task manager that automatically extracts to-dos from your Gmail, Slack, Notion, and more — so you can focus on what matters.
+      </p>
+      <div class="hero-ctas">
+        <a href="#download" class="btn-primary">⬇ Download Denlog</a>
+        <a href="#features" class="btn-outline">See Features →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features">
+    <div class="container">
+      <div class="section-label">Features</div>
+      <h2 class="section-title">Everything you need to stay on top</h2>
+      <p class="section-desc">Denlog uses AI to turn your conversations, emails, and notifications into actionable tasks — automatically.</p>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🤖</div>
+          <h3>AI Task Extraction</h3>
+          <p>Denlog's AI reads your messages and emails, identifies tasks, and adds them to your deck — no manual entry needed.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📧</div>
+          <h3>Gmail Integration</h3>
+          <p>Connect your Gmail account and let Denlog scan your inbox for actionable items, deadlines, and follow-ups in real time.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔔</div>
+          <h3>Android Notifications</h3>
+          <p>Denlog reads your Android notifications and converts important ones into tasks automatically in the background.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💬</div>
+          <h3>Slack & Notion Sync</h3>
+          <p>Connect your Slack channels and Notion pages — Denlog watches for changes and keeps your task list up to date.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎙</div>
+          <h3>Meeting Intelligence</h3>
+          <p>Record meetings inside Denlog and get an AI-generated summary with extracted action items automatically assigned to you.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">👥</div>
+          <h3>Team Collaboration</h3>
+          <p>Share folders, assign tasks, and get notified when teammates complete work — Denlog keeps your whole team in sync.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Integrations -->
+  <section id="integrations" class="integrations-section">
+    <div class="container" style="text-align:center;">
+      <div class="section-label" style="justify-content:center;display:flex;">Integrations</div>
+      <h2 class="section-title">Connects with your existing tools</h2>
+      <p class="section-desc" style="margin:0 auto;">Denlog integrates with the platforms you already use — no switching required.</p>
+      <div class="integrations-row">
+        <div class="integration-chip"><div class="chip-dot"></div>Gmail</div>
+        <div class="integration-chip"><div class="chip-dot"></div>Slack</div>
+        <div class="integration-chip"><div class="chip-dot"></div>Notion</div>
+        <div class="integration-chip"><div class="chip-dot"></div>Android Notifications</div>
+        <div class="integration-chip"><div class="chip-dot"></div>Call Recording</div>
+        <div class="integration-chip" style="opacity:0.5;"><div class="chip-dot" style="background:#64748b"></div>Outlook (Soon)</div>
+        <div class="integration-chip" style="opacity:0.5;"><div class="chip-dot" style="background:#64748b"></div>Telegram (Soon)</div>
+        <div class="integration-chip" style="opacity:0.5;"><div class="chip-dot" style="background:#64748b"></div>GitHub (Soon)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how-it-works">
+    <div class="container">
+      <div class="section-label">How it works</div>
+      <h2 class="section-title">Simple. Automatic. Powerful.</h2>
+      <p class="section-desc">Denlog works in the background so you don't have to think about it.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3>Connect your channels</h3>
+          <p>Link Gmail, Slack, Notion, or enable Android Notifications in the Denlog app settings.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3>AI scans in the background</h3>
+          <p>Denlog's AI pipeline continuously monitors your connected sources for new tasks and deadlines.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3>Review your Deck</h3>
+          <p>Discovered tasks appear in your Denlog Deck — review, confirm, or dismiss with one tap.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <h3>Stay on top</h3>
+          <p>Get smart reminders, track progress, and collaborate — all inside Denlog.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / Download -->
+  <section id="download" style="padding: 4rem 1.5rem;">
+    <div class="cta-section">
+      <div class="section-label" style="justify-content:center;display:flex;">Download</div>
+      <h2 class="section-title">Get Denlog today</h2>
+      <p style="color:var(--muted);margin-top:0.5rem;font-size:1.05rem;">Available on Android. iOS coming soon.</p>
+      <div class="store-badges">
+        <a href="https://play.google.com/store/apps/details?id=app.webster.mobile" class="store-badge" target="_blank" rel="noopener">
+          <div class="store-badge-icon">▶</div>
+          <div class="store-badge-text">
+            <small>Get it on</small>
+            <strong>Google Play</strong>
+          </div>
+        </a>
+        <a href="#" class="store-badge" style="opacity:0.5;cursor:default;">
+          <div class="store-badge-icon"></div>
+          <div class="store-badge-text">
+            <small>Coming soon on</small>
+            <strong>App Store</strong>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-logo">Denlog</div>
+    <p>An application by GR Bridge Solution Kft. · Budapest, Hungary</p>
+    <div class="footer-links">
+      <a href="https://www.grbridgesolution.site" target="_blank" rel="noopener">Company Website</a>
+      <a href="/privacy-en.html">Privacy Policy</a>
+      <a href="/terms-en.html">Terms of Service</a>
+      <a href="mailto:hello@denlog.online">Contact</a>
+    </div>
+    <p class="footer-copy">© 2025 GR Bridge Solution Kft. All rights reserved. · Denlog</p>
+  </footer>
+
+</body>
+</html>

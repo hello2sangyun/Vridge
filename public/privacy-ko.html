@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Denlog - 개인정보처리방침</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #FAFAF8; color: #2D3748; max-width: 720px; margin: 0 auto; padding: 40px 24px 80px; }
+    .logo { font-size: 24px; font-weight: 800; color: #2D3748; margin-bottom: 40px; }
+    .logo span { color: #E8644A; }
+    h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+    .date { color: #718096; font-size: 14px; margin-bottom: 32px; }
+    h2 { font-size: 18px; font-weight: 700; margin: 32px 0 12px; color: #2D3748; }
+    p { font-size: 15px; line-height: 1.8; color: #4A5568; margin-bottom: 12px; }
+    ul { padding-left: 20px; margin-bottom: 12px; }
+    li { font-size: 15px; line-height: 1.8; color: #4A5568; margin-bottom: 6px; }
+    a { color: #E8644A; text-decoration: none; }
+    hr { border: none; border-top: 1px solid #E2E8F0; margin: 32px 0; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
+    th, td { padding: 10px 14px; text-align: left; border: 1px solid #E2E8F0; font-size: 14px; }
+    th { background: #F7FAFC; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="logo">den<span>log</span></div>
+  <h1>개인정보처리방침</h1>
+  <div class="date">최종 수정일: 2026년 5월 23일<br/>개발자: hello2sangyun (이상윤)</div>
+  <hr>
+
+  <h2>1. 수집하는 개인정보</h2>
+  <p>당사는 서비스 가입 및 연동을 위해 사용자의 Google 이메일 주소, 이름, 프로필 사진 등 Google API를 통해 제공되는 데이터를 수집합니다. 또한 Gmail 연동 시 읽기 전용 이메일 접근 권한을 요청합니다.</p>
+  <table>
+    <tr><th>항목</th><th>수집 목적</th><th>보존 기간</th></tr>
+    <tr><td>이름, 이메일, 프로필 사진 (Google 사용자 데이터 포함)</td><td>계정 생성 및 관리</td><td>회원 탈퇴 시까지</td></tr>
+    <tr><td>Gmail 이메일 내용 (읽기 전용)</td><td>이메일에서 AI를 통해 자동으로 할 일과 일정을 추출하기 위함</td><td>서버에 저장되지 않으며, 추출 목적으로 임시 처리 후 즉시 파기됨</td></tr>
+    <tr><td>음성 녹음 파일</td><td>회의 AI 분석</td><td>사용자 삭제 시까지</td></tr>
+    <tr><td>푸시 알림 토큰</td><td>알림 전송</td><td>회원 탈퇴 시까지</td></tr>
+    <tr><td>앱 사용 기록</td><td>서비스 개선 및 분석</td><td>2년</td></tr>
+  </table>
+
+  <h2>2. 개인정보의 이용</h2>
+  <p>수집된 개인정보는 다음 목적으로 이용됩니다:</p>
+  <ul>
+    <li>서비스 제공 및 운영</li>
+    <li>당사는 AI를 활용하여 이메일에서 실행 가능한 작업(Task)과 일정을 자동으로 감지하고 추출하기 위해 Gmail 읽기 전용 권한을 요청합니다. 이 데이터는 절대 다른 목적으로 사용되지 않습니다.</li>
+    <li>회의 음성의 AI 텍스트 변환 (OpenAI Whisper 사용)</li>
+    <li>할 일 및 일정 관리 기능 제공</li>
+    <li>푸시 알림 발송</li>
+    <li>서비스 개선 및 통계 분석</li>
+    <li><strong>수집된 Google 사용자 데이터는 사용자 인증, 프로필 표시, Gmail을 통한 할 일 추출 등 앱의 핵심 기능 제공 목적으로만 제한적으로 사용됩니다.</strong></li>
+  </ul>
+
+  <h2>3. 제3자 제공</h2>
+  <p>다음 서비스에 데이터가 전달될 수 있으며, 이는 오직 앱 기능 제공을 위해서만 이루어집니다:</p>
+  <ul>
+    <li><strong>OpenAI</strong>: 음성 파일 텍스트 변환 및 할 일 추출 (데이터 무단 보관 및 AI 모델 학습 사용 금지)</li>
+    <li><strong>Supabase</strong>: 데이터 저장 (EU 서버)</li>
+    <li><strong>RevenueCat</strong>: 구독 결제 처리</li>
+    <li><strong>Firebase</strong>: 앱 분석 및 알림</li>
+  </ul>
+  <p><strong>당사는 Google 사용자 데이터를 제3자에게 절대 판매(Sell)하지 않습니다.</strong> 명시된 서비스 제공 목적 외에는 어떠한 경우에도 제3자에게 Google 데이터를 전송하거나 공개하지 않습니다. 사용자의 데이터는 타겟팅 광고, 데이터 브로커 판매, 또는 AI 모델 학습 목적으로 절대 사용되지 않습니다.</p>
+
+  <h2>4. 데이터 보안</h2>
+  <p>당사는 귀하의 데이터를 보호하기 위해 강력한 보안 절차를 시행하고 있습니다. 모든 데이터는 전송 및 보관 시 암호화되어 안전하게 보호됩니다. 모든 통신은 HTTPS로 암호화되며, Supabase의 행 수준 보안(RLS) 정책이 적용됩니다.</p>
+
+  <h2>5. 사용자의 권리 및 데이터 보존</h2>
+  <p>당사는 사업 목적 달성에 필요한 기간 동안만 사용자의 개인정보를 보관합니다. 데이터 보존 기간이 만료되면 해당 데이터를 완전히 삭제하거나 영구 파기합니다.</p>
+  <p>귀하는 언제든지 다음 권리를 행사할 수 있습니다:</p>
+  <ul>
+    <li>개인정보 열람 및 수정</li>
+    <li>계정 및 데이터 삭제 요청 (<a href="./delete/">계정 삭제 방법</a>)</li>
+    <li>데이터 처리 동의 철회</li>
+  </ul>
+
+  <h2>6. 문의</h2>
+  <p>개인정보 관련 문의는 <a href="mailto:hello@dovie.online">hello@dovie.online</a>으로 연락해 주십시오.</p>
+
+  <hr>
+  <h2>7. Google API 서비스 사용자 데이터 정책 준수</h2>
+  <p>Denlog의 Google API에서 수신한 정보의 사용 및 다른 앱으로의 전송은 제한적 사용 요건(Limited Use requirements)을 포함하여 <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank">Google API 서비스 사용자 데이터 정책(Google API Services User Data Policy)</a>을 준수합니다.</p>
+</body>
+</html>
